@@ -1,0 +1,995 @@
+<!DOCTYPE html><html lang=zh-CN><head hexo-theme=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=on><link rel=dns-prefetch href=https://cdn.jsdelivr.net><link rel=preconnect href=https://cdn.jsdelivr.net crossorigin><meta name=renderer content=webkit><meta name=force-rendering content=webkit><meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1"><meta name=HandheldFriendly content=True><meta name=apple-mobile-web-app-capable content=yes><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1"><link rel=preload href=/css/first.css as=style><title>Typescript 基础类型详解 - Hajeekn RSSHUB</title><link rel=alternate href=/atom.xml title="Hajeekn RSSHUB" type=application/atom+xml><meta name=referrer content=no-referrer><link rel=stylesheet href=/css/diy.css><link rel=stylesheet href=/css/first.css><link rel=stylesheet href=/css/style.css media=print onload="this.media='all';this.onload=null"><noscript><link rel=stylesheet href=/css/style.css></noscript><script id=loadcss></script><script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script><noscript><style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style><div class=kill-noscript><h1><b>抱歉，您的浏览器无法访问本站</b></h1><h3>本页面需要浏览器支持（启用）JavaScript</h3><br><a target=_blank rel=noopener href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a></div></noscript></head><body><header id=l_header class="l_header always shadow blur show"><div class=container><div id=wrapper><div class=nav-sub><p class=title></p><ul class="switcher nav-list-h m-phone" id=pjax-header-nav-list><li><a id=s-comment class="fas fa-comments fa-fw" target=_self href=javascript:void(0)></a></li><li><a id=s-toc class="s-toc fas fa-list fa-fw" target=_self href=javascript:void(0)></a></li></ul></div><div class=nav-main><a class="title flat-box" target=_self href="/"><img no-lazy class=logo src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png></a><div class="menu navigation"><ul class="nav-list-h m-pc"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></div><div class=m_search><form name=searchform class="form u-search-form"><i class="icon fas fa-search fa-fw"></i> <input type=text class="input u-search-input" placeholder=Search...></form></div><ul class="switcher nav-list-h m-phone"><li><a class="s-search fas fa-search fa-fw" target=_self href=javascript:void(0)></a></li><li><a class="s-menu fas fa-bars fa-fw" target=_self href=javascript:void(0)></a><ul class="menu-phone list-v navigation white-box"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></li></ul></div></div></div></header><div id=l_body><div id=l_cover><div id=full class="cover-wrapper post dock" style="display: none;"><div class="cover-bg lazyload placeholder" data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div><div class=cover-body><div class=top><p class=title>Volantis</p></div><div class=bottom><div class="menu navigation"><div class=list-h><a href="/v4/getting-started/" id=v4getting-started><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg><p>文档</p></a> <a href="/faqs/" id=faqs><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg><p>帮助</p></a> <a href="/examples/" id=examples><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg><p>示例</p></a> <a href="/contributors/" id=contributors><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg><p>社区</p></a> <a href="/archives/" id=archives><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg><p>博客</p></a> <a target=_blank rel=noopener href="https://github.com/volantis-x/hexo-theme-volantis/" id=https:githubcomvolantis-xhexo-theme-volantis><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg><p>源码</p></a></div></div></div></div><div id=scroll-down style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div></div></div><div id=safearea><div class=body-wrapper id=pjax-container><div class=l_main><article class="article post white-box reveal md shadow article-type-post" id=post itemscope itemprop=blogPost><div class=headimg-div><a class=headimg-a><img class=headimg src="https://picsum.photos/400/300?random=7414"></a></div><div class=article-meta id=top><a title="Typescript 基础类型详解" href=/p/fe9.html><img class=thumbnail src="https://picsum.photos/400/300?random=7414"></a><h1 class=title>Typescript 基础类型详解</h1><div class=new-meta-box><div class="new-meta-item author"><a class=author target=_blank href="https://docs.rsshub.app/" rel="nofollow noopener"><img no-lazy src=https://i.loli.net/2019/04/23/5cbeb7e41414c.png><p>RSSHub</p></a></div><div class="new-meta-item category"><a class=notlink><i class="fas fa-folder-open fa-fw" aria-hidden=true></i> <a class=category-link href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class=sep></span><a class=category-link href="/categories/%E7%BC%96%E7%A8%8B/%E6%8E%98%E9%87%91/">掘金</a><span class=sep></span><a class=category-link href="/categories/%E7%BC%96%E7%A8%8B/%E6%8E%98%E9%87%91/%E5%88%86%E7%B1%BB/">分类</a></a></div><div class="new-meta-item date"><a class=notlink><i class="fas fa-calendar-alt fa-fw" aria-hidden=true></i><p>发布于：2021年7月10日</p></a></div><div class="new-meta-item browse leancloud"><a class=notlink><div id=lc-pv data-title="Typescript 基础类型详解" data-path=/p/fe9.html><i class="fas fa-eye fa-fw" aria-hidden=true></i><span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次浏览</div></a></div></div></div><div><div class=markdown-body><style>.markdown-body&#123;word-break:break-word;line-height:1.75;font-weight:400;font-size:15px;overflow-x:hidden;color:#333&#125;.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6&#123;line-height:1.5;margin-top:35px;margin-bottom:10px;padding-bottom:5px&#125;.markdown-body h1&#123;font-size:30px;margin-bottom:5px&#125;.markdown-body h2&#123;padding-bottom:12px;font-size:24px;border-bottom:1px solid #ececec&#125;.markdown-body h3&#123;font-size:18px;padding-bottom:0&#125;.markdown-body h4&#123;font-size:16px&#125;.markdown-body h5&#123;font-size:15px&#125;.markdown-body h6&#123;margin-top:5px&#125;.markdown-body p&#123;line-height:inherit;margin-top:22px;margin-bottom:22px&#125;.markdown-body img&#123;max-width:100%&#125;.markdown-body hr&#123;border:none;border-top:1px solid #ddd;margin-top:32px;margin-bottom:32px&#125;.markdown-body code&#123;word-break:break-word;border-radius:2px;overflow-x:auto;background-color:#fff5f5;color:#ff502c;font-size:.87em;padding:.065em .4em&#125;.markdown-body code,.markdown-body pre&#123;font-family:Menlo,Monaco,Consolas,Courier New,monospace&#125;.markdown-body pre&#123;overflow:auto;position:relative;line-height:1.75&#125;.markdown-body pre>code&#123;font-size:12px;padding:15px 12px;margin:0;word-break:normal;display:block;overflow-x:auto;color:#333;background:#f8f8f8&#125;.markdown-body a&#123;text-decoration:none;color:#0269c8;border-bottom:1px solid #d1e9ff&#125;.markdown-body a:active,.markdown-body a:hover&#123;color:#275b8c&#125;.markdown-body table&#123;display:inline-block!important;font-size:12px;width:auto;max-width:100%;overflow:auto;border:1px solid #f6f6f6&#125;.markdown-body thead&#123;background:#f6f6f6;color:#000;text-align:left&#125;.markdown-body tr:nth-child(2n)&#123;background-color:#fcfcfc&#125;.markdown-body td,.markdown-body th&#123;padding:12px 7px;line-height:24px&#125;.markdown-body td&#123;min-width:120px&#125;.markdown-body blockquote&#123;color:#666;padding:1px 23px;margin:22px 0;border-left:4px solid #cbcbcb;background-color:#f8f8f8&#125;.markdown-body blockquote:after&#123;display:block;content:""&#125;.markdown-body blockquote>p&#123;margin:10px 0&#125;.markdown-body ol,.markdown-body ul&#123;padding-left:28px&#125;.markdown-body ol li,.markdown-body ul li&#123;margin-bottom:0;list-style:inherit&#125;.markdown-body ol li .task-list-item,.markdown-body ul li .task-list-item&#123;list-style:none&#125;.markdown-body ol li .task-list-item ol,.markdown-body ol li .task-list-item ul,.markdown-body ul li .task-list-item ol,.markdown-body ul li .task-list-item ul&#123;margin-top:0&#125;.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul&#123;margin-top:3px&#125;.markdown-body ol li&#123;padding-left:6px&#125;.markdown-body .contains-task-list&#123;padding-left:0&#125;.markdown-body .task-list-item&#123;list-style:none&#125;@media (max-width:720px)&#123;.markdown-body h1&#123;font-size:24px&#125;.markdown-body h2&#123;font-size:20px&#125;.markdown-body h3&#123;font-size:18px&#125;&#125;</style><h2 data-id=heading-0>Boolean</h2><p>布尔类型声明：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> isDone: <span class=hljs-built_in>boolean</span> = <span class=hljs-literal>false</span>;
+<span class=copy-code-btn>复制代码</span></code></pre><h2 data-id=heading-1>Number</h2><p>和在<code>JavaScript</code>中一样，<code>TypeScript</code>中的所有数字要么是浮点值，要么是<code>BigIntegers</code>。这些浮点数的类型是<code>number</code>，而<code>BigIntegers</code>的类型是<code>bigint</code>。除了十六进制和十进制，<code>TypeScript</code>还支持<code>ECMAScript 2015</code>引入的二进制和八进制。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> decimal: <span class=hljs-built_in>number</span> = <span class=hljs-number>6</span>;
+<span class=hljs-keyword>let</span> hex: <span class=hljs-built_in>number</span> = <span class=hljs-number>0xf00d</span>;
+<span class=hljs-keyword>let</span> binary: <span class=hljs-built_in>number</span> = <span class=hljs-number>0b1010</span>;
+<span class=hljs-keyword>let</span> octal: <span class=hljs-built_in>number</span> = <span class=hljs-number>0o744</span>;
+<span class=hljs-keyword>let</span> big: bigint = <span class=hljs-number>100n</span>;
+<span class=copy-code-btn>复制代码</span></code></pre><h2 data-id=heading-2>String</h2><p>在<code>typescript</code>中使用<code>string</code>来定义一个字符串类型的变量，跟<code>javascript</code>一样变量可以使用单引号或者双引号扩起来：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> color: <span class=hljs-built_in>string</span> = <span class=hljs-string>"blue"</span>;
+color = <span class=hljs-string>'red'</span>;
+<span class=copy-code-btn>复制代码</span></code></pre><p>还可以使用模版字符串，模版字符串可以跨越多行并且可以有嵌套的表达式。字符串的值使用``反引号括起来，表达式使用<code>$&#123; expr &#125;</code>。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> fullName: <span class=hljs-built_in>string</span> = <span class=hljs-string>`Bob Bobbington`</span>;
+<span class=hljs-keyword>let</span> age: <span class=hljs-built_in>number</span> = <span class=hljs-number>37</span>;
+<span class=hljs-keyword>let</span> sentence: <span class=hljs-built_in>string</span> =
+  <span class=hljs-string>"Hello, my name is "</span> +
+  fullName +
+  <span class=hljs-string>".\n\n"</span> +
+  <span class=hljs-string>"I'll be "</span> +
+  (age + <span class=hljs-number>1</span>) +
+  <span class=hljs-string>" years old next month."</span>;
+<span class=copy-code-btn>复制代码</span></code></pre><h2 data-id=heading-3>Array</h2><p>声明数组变量有两种方式，</p><p><strong>方式一：</strong> 元素类型 + []</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> list: <span class=hljs-built_in>number</span>[] = [<span class=hljs-number>1</span>, <span class=hljs-number>2</span>, <span class=hljs-number>3</span>];
+<span class=copy-code-btn>复制代码</span></code></pre><p><strong>方式二：</strong> 使用范型类型<code>Array<elemtype></elemtype></code></p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> list: <span class=hljs-built_in>Array</span><<span class=hljs-built_in>number</span>> = [<span class=hljs-number>1</span>, <span class=hljs-number>2</span>, <span class=hljs-number>3</span>];
+<span class=copy-code-btn>复制代码</span></code></pre><h2 data-id=heading-4>Tuple（元组）</h2><p>元组用来定义元素个数固定的数组，数组中元素可以有各自的类型：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-comment>// Declare a tuple type</span>
+<span class=hljs-keyword>let</span> x: [<span class=hljs-built_in>string</span>, <span class=hljs-built_in>number</span>];
+<span class=hljs-comment>// Initialize it</span>
+x = [<span class=hljs-string>"hello"</span>, <span class=hljs-number>10</span>]; <span class=hljs-comment>// OK</span>
+<span class=hljs-comment>// Initialize it incorrectly</span>
+x = [<span class=hljs-number>10</span>, <span class=hljs-string>"hello"</span>]; <span class=hljs-comment>// Error</span>
+<span class=hljs-comment>// Type 'number' is not assignable to type 'string'.</span>
+<span class=hljs-comment>// Type 'string' is not assignable to type 'number'.</span>
+<span class=copy-code-btn>复制代码</span></code></pre><p>当访问一个已知索引的元素，获取到的值的类型是相对应位置的类型:</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-comment>// OK</span>
+<span class=hljs-built_in>console</span>.log(x[<span class=hljs-number>0</span>].substring(<span class=hljs-number>1</span>));
+
+<p><span class=hljs-built_in>console</span>.log(x[<span class=hljs-number>1</span>].substring(<span class=hljs-number>1</span>));<br><span class=hljs-comment>// Property ‘substring’ does not exist on type ‘number’.</span><br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>通过超出元组索引范围的下标访问元组中的值会报错:</p><pre><code class="hljs language-ts copyable" lang=ts>x[<span class=hljs-number>3</span>] = <span class=hljs-string>"world"</span>;
+<span class=hljs-comment>// Tuple type '[string, number]' of length '2' has no element at index '3'.</span>
+
+<p><span class=hljs-built_in>console</span>.log(x[<span class=hljs-number>5</span>].toString());<br><span class=hljs-comment>// Object is possibly ‘undefined’.</span><br><span class=hljs-comment>// Tuple type ‘[string, number]’ of length ‘2’ has no element at index ‘5’.</span><br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><h2 data-id=heading-5>Enum (枚举)</h2><p>枚举是 <code>TypeScript</code> 为数不多的不是 <code>JavaScript</code> 类型扩展的特性之一。<code>Typescript</code> 提供数字枚举和基于字符串的枚举。定义枚举使用<code>Enum</code>关键字。</p><h3 data-id=heading-6>Numeric enums （数字枚举）</h3><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> Direction &#123;
+  Up = <span class=hljs-number>1</span>,
+  Down,
+  Left,
+  Right,
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><p>定义一个数字枚举类型<code>Direction</code>，第一个元素<code>UP</code>初始值为1，后续元素的值在此基础上自动递增，也就是说·<code>Down =2, Left=3, Right = 4</code>，如果不带初始值：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> Direction &#123;
+  Up,
+  Down,
+  Left,
+  Right,
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><p>此时<code>UP</code>初始值为<code>0</code>，后续元素的值在此基础上自动递增。如果我们不关心成员的值，只要他们的值不相同就可以，那自动递增就非常有用了。</p><p>或者也可以给每个元素明确的赋值，</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> Color &#123;
+  Red = <span class=hljs-number>1</span>,
+  Green = <span class=hljs-number>2</span>,
+  Blue = <span class=hljs-number>4</span>,
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><p>另一个方便的特性是还可以通过值来获取到对应值的名称（反向映射后面还会提到）</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> Color &#123;
+  Red = <span class=hljs-number>1</span>,
+  Green,
+  Blue,
+&#125;
+<span class=hljs-keyword>let</span> colorName: <span class=hljs-built_in>string</span> = Color[<span class=hljs-number>2</span>];
+
+<p><span class=hljs-comment>// Displays ‘Green’</span><br><span class=hljs-built_in>console</span>.log(colorName);<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>使用枚举很简单：访问枚举类型的属性，并使用枚举的名称声明类型：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> UserResponse &#123;
+  No = <span class=hljs-number>0</span>,
+  Yes = <span class=hljs-number>1</span>,
+&#125;
+
+<p><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>respond</span>(<span class=hljs-params>recipient: <span class=hljs-built_in>string</span>, message: UserResponse</span>): <span class=hljs-title>void</span> </span>&#123;<br>  <span class=hljs-comment>// …</span><br>&#125;</p>
+<p>respond(<span class=hljs-string>“Princess Caroline”</span>, UserResponse.Yes);<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>没有初始化器的枚举要么必须放在第一个，要么必须放在用数字常量或其他常量枚举成员初始化的数字枚举之后。换句话说，以下情况是不允许的:</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> E &#123;
+  A = getSomeValue(),
+  B,
+<span class=hljs-comment>// Enum member must have initializer.</span>
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><h3 data-id=heading-7>String enums(字符串枚举)</h3><p>字符串枚举的概念与数字枚举类似，但是有一些运行时的差别。字符串枚举类型的成员必须使用字符串或者另一个字符串枚举成员进行常量初始化。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> Direction &#123;
+  Up = <span class=hljs-string>"UP"</span>,
+  Down = <span class=hljs-string>"DOWN"</span>,
+  Left = <span class=hljs-string>"LEFT"</span>,
+  Right = <span class=hljs-string>"RIGHT"</span>,
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><p>尽管字符串枚举类型没有自动增长的行为，但字符串枚举的好处是它们可以很好地序列化。换句话说，在调试数字枚举运行时的值时，数字枚举的属性值不能够明确的向我们传达其所代表的意思（尽管有反向映射来获取属性值对应的属性名称），但字符串枚举可以给出一个有意义并且可读性更高的值。这样就不用依赖于枚举成员的名称了。</p><h3 data-id=heading-8>Heterogeneous enums （异构枚举）</h3><p><code>Typescript</code>的枚举类型是支持混合字符串枚举和数字枚举的。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> BooleanLikeHeterogeneousEnum &#123;
+  No = <span class=hljs-number>0</span>,
+  Yes = <span class=hljs-string>"YES"</span>,
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><p>但是一般不推荐这样的用法。</p><h3 data-id=heading-9>计算成员和常量成员</h3><p>每个枚举成员都有一个与之关联的值，可以是常量，也可以是计算值。一个枚举成员在满足下列条件时被认为是常量：</p><ul><li>如果是枚举中的第一个成员并且没有初始化器，在这种情况下它被初始化为0.<pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-comment>// E.X is constant:</span>
+<span class=hljs-built_in>enum</span> E &#123;
+  X,
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre></li><li>没有初始化器并且它前面的枚举成员是一个数值常量。在这种情况下当前枚举成员的值是前面一个枚举成员的值加1。</li></ul><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-comment>// All enum members in 'E1' and 'E2' are constant.</span>
+
+<p><span class=hljs-built_in>enum</span> E1 &#123;<br>  X,<br>  Y,<br>  Z,<br>&#125;</p>
+<p><span class=hljs-built_in>enum</span> E2 &#123;<br>  A = <span class=hljs-number>1</span>,<br>  B,<br>  C,<br>&#125;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><ul><li>枚举成员使用常量枚举表达式进行初始化。常量枚举表达式是<code>TypeScript</code>表达式的子集，可以在编译时完全求值。一个表达式满足下列条件就是常量枚举表达式：</li></ul><ol><li>字面量枚举表达式(主要是字符串字面量或数字字面量)</li><li>对先前定义的常量枚举成员的引用(它可以源自不同的枚举)</li><li>带圆括号的常量枚举表达式</li><li>用于常量枚举表达式的<code>+、-、~</code>一元运算符之一</li><li><code>+, -, *, /, %,<<,>>, >>>, &, |, ^</,></code>二进制操作符，常量枚举表达式作为操作数</li></ol><p>如果将常量枚举表达式求值为NaN或Infinity将会得到一个编译时错误。</p><p>所有其它情况的枚举成员都被当作是需要计算得出的值。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> FileAccess &#123;
+  <span class=hljs-comment>// constant members</span>
+  None,
+  Read = <span class=hljs-number>1</span> <<<span class=hljs-number>1</span>,
+  Write = <span class=hljs-number>1</span> <<<span class=hljs-number>2</span>,
+  ReadWrite = Read | Write,
+  <span class=hljs-comment>// computed member</span>
+  G = <span class=hljs-string>"123"</span>.length,
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><h3 data-id=heading-10>联合枚举和枚举成员类型（Union enums and enum member types）</h3><p>还有一种特殊的常量枚举成员的子集：字面量枚举成员。字面量枚举成员是值没有初始值的常量枚举成员或者初始值被初始化为:</p><ul><li>任何字符串字面量（例如："foo","bar","baz"）</li><li>任何数字字面量（例如：1，100）</li><li>或者任何加了一元操作符<code>-</code>号的数字字面量（比如：-1，-100）</li></ul><p>当枚举中的所有成员都有字面量枚举值时，就会产生一些特殊的语义。</p><p><strong>第一，</strong> 枚举成员本身也会成为类型。比如我们可以定义对象的某些成员只能具有枚举成员的值。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> ShapeKind &#123;
+  Circle,
+  Square,
+&#125;
+
+<p><span class=hljs-keyword>interface</span> Circle &#123;<br>  <span class=hljs-attr>kind</span>: ShapeKind.Circle;<br>  radius: <span class=hljs-built_in>number</span>;<br>&#125;</p>
+<p><span class=hljs-keyword>interface</span> Square &#123;<br>  <span class=hljs-attr>kind</span>: ShapeKind.Square;<br>  sideLength: <span class=hljs-built_in>number</span>;<br>&#125;</p>
+<p><span class=hljs-keyword>let</span> c: Circle = &#123;<br>  <span class=hljs-attr>kind</span>: ShapeKind.Square,<br><span class=hljs-comment>// Type ‘ShapeKind.Square’ is not assignable to type ‘ShapeKind.Circle’.</span><br>  <span class=hljs-attr>radius</span>: <span class=hljs-number>100</span>,<br>&#125;;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p><strong>第二，</strong> 枚举类型本身实际上变成了每个枚举成员的联合。使用联合枚举，类型系统就能够知道存在于枚举中的确切的值，利用这一点<code>Typescript</code>可以捕获到错误比较的<code>bug</code>，例如：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> E &#123;
+  Foo,
+  Bar,
+&#125;
+
+<p><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>f</span>(<span class=hljs-params>x: E</span>) </span>&#123;<br>  <span class=hljs-keyword>if</span> (x !== E.Foo || x !== E.Bar) &#123;<br>  <span class=hljs-comment>// This condition will always return ‘true’ since the types ‘E.Foo’ and ‘E.Bar’ have no overlap.</span><br>  &#125;<br>&#125;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>在这个例子中，我们首先比较了 <code>x</code> 是否不等于 <code>E.Foo</code>。 如果这个条件成立，判断就结束了。但是如果不成立那<code>x</code>就是<code>E.Foo</code>。所以后面再去比较<code>E.bar</code>就没有意义了。</p><h3 data-id=heading-11>运行时的枚举</h3><p>在运行时枚举就是真实的对象，例如：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> E &#123;
+  X,
+  Y,
+  Z,
+&#125;
+
+<p><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>f</span>(<span class=hljs-params>obj: &#123; X: <span class=hljs-built_in>number</span> &#125;</span>) </span>&#123;<br>  <span class=hljs-keyword>return</span> obj.X;<br>&#125;</p>
+<p><span class=hljs-comment>// Works, since ‘E’ has a property named ‘X’ which is a number.</span><br>f(E);<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>这里可以直接将枚举当对象使用。</p><h3 data-id=heading-12>编译时的枚举</h3><p>使用<code>keyof typeof</code>关键字可以获取一个类型，该类型将枚举所有的键表示为字符串。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> LogLevel &#123;
+  ERROR,
+  WARN,
+  INFO,
+  DEBUG,
+&#125;
+
+<p><span class=hljs-comment>/**</span></p>
+<ul>
+<li>This is equivalent to:</li>
+<li>type LogLevelStrings = ‘ERROR’ | ‘WARN’ | ‘INFO’ | ‘DEBUG’;</li>
+<li>/<br><span class=hljs-keyword>type</span> LogLevelStrings = keyof <span class=hljs-keyword>typeof</span> LogLevel;</li>
+</ul>
+<p><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>printImportant</span>(<span class=hljs-params>key: LogLevelStrings, message: <span class=hljs-built_in>string</span></span>) </span>&#123;<br>  <span class=hljs-keyword>const</span> num = LogLevel[key];<br>  <span class=hljs-keyword>if</span> (num &lt;= LogLevel.WARN) &#123;<br>    <span class=hljs-built_in>console</span>.log(<span class=hljs-string>“Log level key is:”</span>, key);<br>    <span class=hljs-built_in>console</span>.log(<span class=hljs-string>“Log level value is:”</span>, num);<br>    <span class=hljs-built_in>console</span>.log(<span class=hljs-string>“Log level message is:”</span>, message);<br>  &#125;<br>&#125;<br>printImportant(<span class=hljs-string>“ERROR”</span>, <span class=hljs-string>“This is a message”</span>);<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><h3 data-id=heading-13>反向映射 （Reverse mappings）</h3><p>数字枚举类型成员会有一个从值到名字的反向映射，在前面也已经提到过。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> Enum &#123;
+  A,
+&#125;
+
+<p><span class=hljs-keyword>let</span> a = Enum.A;<br><span class=hljs-keyword>let</span> nameOfA = Enum[a]; <span class=hljs-comment>// “A”</span><br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p><code>Typescript</code>会将这段代码编译成下面的<code>js</code>代码：</p><pre><code class="hljs language-js copyable" lang=js><span class=hljs-meta>"use strict"</span>;
+<span class=hljs-keyword>var</span> Enum;
+(<span class=hljs-function><span class=hljs-keyword>function</span> (<span class=hljs-params>Enum</span>) </span>&#123;
+    Enum[Enum[<span class=hljs-string>"A"</span>] = <span class=hljs-number>0</span>] = <span class=hljs-string>"A"</span>;
+&#125;)(Enum || (Enum = &#123;&#125;));
+<span class=hljs-keyword>let</span> a = Enum.A;
+<span class=hljs-keyword>let</span> nameOfA = Enum[a]; <span class=hljs-comment>// "A"</span>
+<span class=copy-code-btn>复制代码</span></code></pre><p>最后的结果是将枚举编译成为一个对象，这个对象既存储了<code>name->value</code>的映射，又存储了<code>value->name</code>的映射。</p><p>需要特别注意的一点，字符串枚举不具备这种反向映射能力。</p><h4 data-id=heading-14>const 枚举 （const enums）</h4><p>常量枚举使用<code>const</code>修饰符定义，并且只能使用常量枚举表达式。不同于一般的枚举类型，如何不存在反向映射的访问，常量枚举在编译阶段会被完全移除掉，只会在使用枚举成员的地方保留枚举成员的值，正是因为没有计算成员，所以能够在编译阶段做到这一点。看个例子就明白了：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-built_in>enum</span> Direction &#123;
+  Up,
+  Down,
+  Left,
+  Right,
+&#125;
+
+<p><span class=hljs-keyword>let</span> directions = [<br>  Direction.Up,<br>  Direction.Down,<br>  Direction.Left,<br>  Direction.Right,<br>];<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>这个例子只存在对枚举成员的访问没有反向访问的情况（比如 <code>Direction[0]</code>，如果没有使用常量枚举编译后的<code>js</code>代码为：</p><pre><code class="hljs language-js copyable" lang=js><span class=hljs-keyword>var</span> Direction;
+(<span class=hljs-function><span class=hljs-keyword>function</span> (<span class=hljs-params>Direction</span>) </span>&#123;
+    Direction[Direction[<span class=hljs-string>"Up"</span>] = <span class=hljs-number>0</span>] = <span class=hljs-string>"Up"</span>;
+    Direction[Direction[<span class=hljs-string>"Down"</span>] = <span class=hljs-number>1</span>] = <span class=hljs-string>"Down"</span>;
+    Direction[Direction[<span class=hljs-string>"Left"</span>] = <span class=hljs-number>2</span>] = <span class=hljs-string>"Left"</span>;
+    Direction[Direction[<span class=hljs-string>"Right"</span>] = <span class=hljs-number>3</span>] = <span class=hljs-string>"Right"</span>;
+&#125;)(Direction || (Direction = &#123;&#125;));
+<span class=hljs-keyword>var</span> directions = [
+    Direction.Up,
+    Direction.Down,
+    Direction.Left,
+    Direction.Right,
+];
+<span class=copy-code-btn>复制代码</span></code></pre><p>使用<code>const</code> 定义常量枚举类型：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>const</span> <span class=hljs-built_in>enum</span> Direction &#123;
+  Up,
+  Down,
+  Left,
+  Right,
+&#125;
+...
+<span class=copy-code-btn>复制代码</span></code></pre><p>编译后的<code>js</code>代码：</p><pre><code class="hljs language-js copyable" lang=js><span class=hljs-keyword>var</span> directions = [
+    <span class=hljs-number>0</span> <span class=hljs-comment>/* Up */</span>,
+    <span class=hljs-number>1</span> <span class=hljs-comment>/* Down */</span>,
+    <span class=hljs-number>2</span> <span class=hljs-comment>/* Left */</span>,
+    <span class=hljs-number>3</span> <span class=hljs-comment>/* Right */</span>,
+];
+<span class=copy-code-btn>复制代码</span></code></pre><p>这样的好处是显而易见的，没有了反向映射的额外代码，最终的代码变少了。</p><h3 data-id=heading-15>外部枚举 （Ambient enums）</h3><p>外部枚举被用来描述已经存在的枚举类型的，也就说：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-comment>// Note: Assume no other file has actually created a Foo var at runtime</span>
+<span class=hljs-keyword>declare</span> <span class=hljs-built_in>enum</span> Foo &#123; Bar &#125; 
+<span class=hljs-keyword>var</span> s = <span class=hljs-string>'Bar'</span>;
+<span class=hljs-keyword>var</span> b = Foo[s]; <span class=hljs-comment>// Fails</span>
+<span class=copy-code-btn>复制代码</span></code></pre><p>假定没有在其他地方定义过<code>Foo</code>枚举类型，这段代码不会在编译时报错，但是会在运行时报错，因为没有定义<code>Foo</code>枚举类型。</p><p>外部枚举和非外部枚举的一个重要区别是，在非外部枚举中，如果前一个枚举成员是常量，那么没有初始化式的成员将被认为是常量。相反，没有初始化式的外部(并且非<code>const</code>)枚举成员总是被当作计计算枚举成员。</p><h2 data-id=heading-16>Unknown</h2><p>当定义不知道的变量类型的时候可以将变量的类型定义为<code>unknown</code>。<code>unknown</code>就是告诉编译器当前变量可能是任何类型的值，我们现在不知道变量的类型所以给它一个<code>unknow</code>的类型。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> notSure: unknown = <span class=hljs-number>4</span>;
+notSure = <span class=hljs-string>"maybe a string instead"</span>;
+
+<p><span class=hljs-comment>// OK, definitely a boolean</span><br>notSure = <span class=hljs-literal>false</span>;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>一个unknown类型的变量，可以通过<code>typeof</code>、比较检查或更高级的类型保护将其缩小到更具体的范围：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>declare</span> <span class=hljs-keyword>const</span> maybe: unknown;
+<span class=hljs-comment>// 'maybe' could be a string, object, boolean, undefined, or other types</span>
+<span class=hljs-keyword>const</span> aNumber: <span class=hljs-built_in>number</span> = maybe;
+<span class=hljs-comment>// Type 'unknown' is not assignable to type 'number'.</span>
+
+<p><span class=hljs-keyword>if</span> (maybe === <span class=hljs-literal>true</span>) &#123;<br>  <span class=hljs-comment>// TypeScript knows that maybe is a boolean now</span><br>  <span class=hljs-keyword>const</span> aBoolean: <span class=hljs-built_in>boolean</span> = maybe;<br>  <span class=hljs-comment>// So, it cannot be a string</span><br>  <span class=hljs-keyword>const</span> aString: <span class=hljs-built_in>string</span> = maybe;<br><span class=hljs-comment>// Type ‘boolean’ is not assignable to type ‘string’.</span><br>&#125;</p>
+<p><span class=hljs-keyword>if</span> (<span class=hljs-keyword>typeof</span> maybe === <span class=hljs-string>“string”</span>) &#123;<br>  <span class=hljs-comment>// TypeScript knows that maybe is a string</span><br>  <span class=hljs-keyword>const</span> aString: <span class=hljs-built_in>string</span> = maybe;<br>  <span class=hljs-comment>// So, it cannot be a boolean</span><br>  <span class=hljs-keyword>const</span> aBoolean: <span class=hljs-built_in>boolean</span> = maybe;<br><span class=hljs-comment>// Type ‘string’ is not assignable to type ‘boolean’.</span><br>&#125;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><h2 data-id=heading-17>Any</h2><p>当你想绕过类型检查的时候可以使用<code>any</code>类型</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>declare</span> <span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>getValue</span>(<span class=hljs-params>key: <span class=hljs-built_in>string</span></span>): <span class=hljs-title>any</span></span>;
+<span class=hljs-comment>// OK, return value of 'getValue' is not checked</span>
+<span class=hljs-keyword>const</span> str: <span class=hljs-built_in>string</span> = getValue(<span class=hljs-string>"myString"</span>);
+<span class=copy-code-btn>复制代码</span></code></pre><p>与<code>unknown</code>的区别是，当定一个变量为<code>any</code>类型的时候，可以访问这个变量的任意属性，<code>ts</code>不会检查属性是否存在和属性的类型。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> looselyTyped: <span class=hljs-built_in>any</span> = <span class=hljs-number>4</span>;
+<span class=hljs-comment>// OK, ifItExists might exist at runtime</span>
+looselyTyped.ifItExists();
+<span class=hljs-comment>// OK, toFixed exists (but the compiler doesn't check)</span>
+looselyTyped.toFixed();
+
+<p><span class=hljs-keyword>let</span> strictlyTyped: unknown = <span class=hljs-number>4</span>;<br>strictlyTyped.toFixed();<br><span class=hljs-comment>// Object is of type ‘unknown’.</span></p>
+<p><span class=hljs-keyword>let</span> looselyTyped: <span class=hljs-built_in>any</span> = &#123;&#125;;<br><span class=hljs-keyword>let</span> d = looselyTyped.a.b.c.d;<br><span class=hljs-comment>// let d: any</span><br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>虽然使用<code>any</code>有这些便利，但是是以牺牲类型安全为代价的，这样就违背了使用<code>Typescript</code>的初衷了，总之能避免使用<code>any</code>就尽量避免。</p><h2 data-id=heading-18>Void</h2><p><code>void</code>类型有点像是<code>any</code>的反面，表示没有任何类型。通常在定义一个没有返回值的函数时会使用到：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>warnUser</span>(<span class=hljs-params></span>): <span class=hljs-title>void</span> </span>&#123;
+  <span class=hljs-built_in>console</span>.log(<span class=hljs-string>"This is my warning message"</span>);
+&#125;
+<span class=copy-code-btn>复制代码</span></code></pre><p>将一个变量声明为<code>void</code>用处不大，因为只能赋值为<code>null</code>（没有指定<code>--strictNullChecks</code>的情况下）或者<code>undefined</code>：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> unusable: <span class=hljs-built_in>void</span> = <span class=hljs-literal>undefined</span>;
+<span class=hljs-comment>// OK if `--strictNullChecks` is not given</span>
+unusable = <span class=hljs-literal>null</span>;
+<span class=copy-code-btn>复制代码</span></code></pre><h2 data-id=heading-19>Null 和 Undefined</h2><p>在<code>Typescript</code>中，值<code>null</code>和<code>undefined</code>都有自己的类型，分别为<code>null</code> 和 <code>undefined</code>。如果当前变量声明为<code>null</code>或者<code>undefined</code>时，也只能分别赋值为<code>null</code>和<code>undefined</code>：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-comment>// Not much else we can assign to these variables!</span>
+<span class=hljs-keyword>let</span> u: <span class=hljs-literal>undefined</span> = <span class=hljs-literal>undefined</span>;
+<span class=hljs-keyword>let</span> n: <span class=hljs-literal>null</span> = <span class=hljs-literal>null</span>;
+<span class=copy-code-btn>复制代码</span></code></pre><p>类型<code>null</code>和<code>undefined</code>是其他类型的子类型，比如可以将<code>null</code> 或者 <code>undefined</code>赋值给<code>number</code>类型的变量。</p><p>但是如果使用<code>--strictNullChecks</code>，<code>null</code>和<code>undefined</code>就只能赋值给<code>unknown</code>、<code>any</code> 还有他们各自的类型<code>null</code>和<code>undefined</code>的变量（<code>undefined</code>还可以赋值给<code>void</code>类型的变量）。</p><h2 data-id=heading-20>Never</h2><p><code>never</code>表示永远不会出现的值的类型。 比如一个函数永远不会返回或者总是抛出错误那么就可以将这个函数的返回值类型定义为<code>never</code>类型。当变量被永不为真的类型守卫所约束时也会获得<code>never</code>类型。</p><p><code>never</code>类型是任何类型的子类型，可以赋值给任何类型。但是只有<code>never</code>可以赋值给<code>never</code>，<code>any</code>类型也不能赋值给<code>never</code>。</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-comment>// Function returning never must not have a reachable end point</span>
+<span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>error</span>(<span class=hljs-params>message: <span class=hljs-built_in>string</span></span>): <span class=hljs-title>never</span> </span>&#123;
+  <span class=hljs-keyword>throw</span> <span class=hljs-keyword>new</span> <span class=hljs-built_in>Error</span>(message);
+&#125;
+
+<p><span class=hljs-comment>// Inferred return type is never</span><br><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>fail</span>(<span class=hljs-params></span>) </span>&#123;<br>  <span class=hljs-keyword>return</span> error(<span class=hljs-string>“Something failed”</span>);<br>&#125;</p>
+<p><span class=hljs-comment>// Function returning never must not have a reachable end point</span><br><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>infiniteLoop</span>(<span class=hljs-params></span>): <span class=hljs-title>never</span> </span>&#123;<br>  <span class=hljs-keyword>while</span> (<span class=hljs-literal>true</span>) &#123;&#125;<br>&#125;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p><strong><code>never</code> 的使用场景：</strong></p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>interface</span> Foo &#123;
+  <span class=hljs-attr>type</span>: <span class=hljs-string>'foo'</span>
+&#125;
+
+<p><span class=hljs-keyword>interface</span> Bar &#123;<br>  <span class=hljs-attr>type</span>: <span class=hljs-string>‘bar’</span><br>&#125;</p>
+<p><span class=hljs-keyword>type</span> All = Foo | Bar</p>
+<p><span class=hljs-comment>// 在 switch 当中判断 type，TS 是可以收窄类型的 (discriminated union)：</span><br><span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>handleValue</span>(<span class=hljs-params>val: All</span>) </span>&#123;<br>  <span class=hljs-keyword>switch</span> (val.type) &#123;<br>    <span class=hljs-keyword>case</span> <span class=hljs-string>‘foo’</span>:<br>      <span class=hljs-comment>// 这里 val 被收窄为 Foo</span><br>      <span class=hljs-keyword>break</span><br>    <span class=hljs-keyword>case</span> <span class=hljs-string>‘bar’</span>:<br>      <span class=hljs-comment>// val 在这里是 Bar</span><br>      <span class=hljs-keyword>break</span><br>    <span class=hljs-attr>default</span>:<br>      <span class=hljs-comment>// val 在这里是 never</span><br>      <span class=hljs-keyword>const</span> exhaustiveCheck: <span class=hljs-built_in>never</span> = val<br>      <span class=hljs-keyword>break</span><br>  &#125;<br>&#125;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>如果增加一个新的类型，但是没有在<code>switch</code>中处理：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>type</span> All = Foo | Bar | Baz
+<span class=copy-code-btn>复制代码</span></code></pre><p>最终<code>default</code> 里面的<code>val</code>就被收窄为<code>Baz</code>， 因为没有任何类型可以赋值给<code>never</code>（除了<code>never</code>自己）导致这里无法通过编译。通过这个办法可以确保 <code>handleValue</code> 总是穷尽 (<code>exhaust</code>) 了所有 <code>All</code> 的可能类型。</p><h2 data-id=heading-21>Object</h2><p><code>object</code>表示非原始类型，也就是除<code>number</code>，<code>string</code>，<code>boolean</code>，<code>symbol</code>，<code>null</code>或<code>undefined</code>之外的类型。</p><p>使用<code>object</code>类型就可以更好的表示像<code>Object.create</code>这样的<code>API</code>。例如：</p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>declare</span> <span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>create</span>(<span class=hljs-params>o: <span class=hljs-built_in>object</span> | <span class=hljs-literal>null</span></span>): <span class=hljs-title>void</span></span>;
+
+<p><span class=hljs-comment>// OK</span><br>create(&#123; <span class=hljs-attr>prop</span>: <span class=hljs-number>0</span> &#125;);<br>create(<span class=hljs-literal>null</span>);<br>create(<span class=hljs-literal>undefined</span>); <span class=hljs-comment>// with <code>--strictNullChecks</code> flag enabled, undefined is not a subtype of null</span><br><span class=hljs-comment>// Argument of type ‘undefined’ is not assignable to parameter of type ‘object | null’.</span></p>
+<p>create(<span class=hljs-number>42</span>);<br><span class=hljs-comment>// Argument of type ‘42’ is not assignable to parameter of type ‘object | null’.</span><br>create(<span class=hljs-string>“string”</span>);<br><span class=hljs-comment>// Argument of type ‘“string”‘ is not assignable to parameter of type ‘object | null’.</span><br>create(<span class=hljs-literal>false</span>);<br><span class=hljs-comment>// Argument of type ‘false’ is not assignable to parameter of type ‘object | null’.</span><br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p>## Type assertions （类型断言）</p><p>有时候当我们明确的知道某个值的类型，然后想告诉编译器将这个值按照某种类型处理时就可以使用类型断言，类型断言只用于编译阶段的类型检查，不会对值做任何运行时的转换。</p><p>有两种方式可以做类型断言：</p><p><strong>使用as语法</strong></p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> someValue: unknown = <span class=hljs-string>"this is a string"</span>;
+
+<p><span class=hljs-keyword>let</span> strLength: <span class=hljs-built_in>number</span> = (someValue <span class=hljs-keyword>as</span> <span class=hljs-built_in>string</span>).length;<br><span class=copy-code-btn>复制代码</span></p></code></pre><p></p><p><strong>使用尖括号语法</strong></p><pre><code class="hljs language-ts copyable" lang=ts><span class=hljs-keyword>let</span> someValue: unknown = <span class=hljs-string>"this is a string"</span>;
+<span class=hljs-keyword>let</span> strLength: <span class=hljs-built_in>number</span> = (<<span class=hljs-built_in>string</span>>someValue).length;
+<span class=copy-code-btn>复制代码</span></code></pre><p>两种方式是等效的，喜欢那种方式看个人喜好，需要注意的是在<code>JSX</code>中只能使用<code>as</code>语法</p><p>## 关于 <code>Number</code>,<code>String</code>,<code>Boolean</code>,<code>Symbol</code>, <code>Object</code></p><p>需要区分<code>Number</code>,<code>String</code>,<code>Boolean</code>,<code>Symbol</code>, <code>Object</code>和小写的<code>number</code>,<code>string</code>,<code>boolean</code>,<code>symbol</code>, <code>object</code>，只有小写形式可以作为类型。</p><h2 data-id=heading-22>参考资料</h2><ol><li><a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.typescriptlang.org%2Fdocs%2Fhandbook%2Fenums.html%23numeric-enums" target=_blank rel="nofollow noopener noreferrer" title=https://www.typescriptlang.org/docs/handbook/enums.html#numeric-enums ref="nofollow noopener noreferrer">Enums</a></li><li><a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.typescriptlang.org%2Fdocs%2Fhandbook%2Fbasic-types.html" target=_blank rel="nofollow noopener noreferrer" title=https://www.typescriptlang.org/docs/handbook/basic-types.html ref="nofollow noopener noreferrer">Basic Types</a></li><li><a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F354601204" target=_blank rel="nofollow noopener noreferrer" title=https://www.zhihu.com/question/354601204 ref="nofollow noopener noreferrer">TypeScript中的never类型具体有什么用？</a></li><li><a href="https://link.juejin.cn/?target=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F28818849%2Fhow-do-the-different-enum-variants-work-in-typescript" target=_blank rel="nofollow noopener noreferrer" title=https://stackoverflow.com/questions/28818849/how-do-the-different-enum-variants-work-in-typescript ref="nofollow noopener noreferrer">How do the different enum variants work in TypeScript?</a></li></ol></div></div><div class=footer><div class=copyright><blockquote><p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p><p>本文永久链接是：<a href=https://news.slqwq.cn/p/fe9.html>https://news.slqwq.cn/p/fe9.html</a></p></blockquote></div></div><div class=article-meta id=bottom><div class=new-meta-box><div class="new-meta-item date" itemprop=dateUpdated datetime=2021-07-11T00:44:20+00:00><a class=notlink><i class="fas fa-edit fa-fw" aria-hidden=true></i><p>更新于：2021年7月11日</p></a></div><div class="new-meta-item share -mob-share-list"><div class="-mob-share-list share-body"><a class=-mob-share-qq rel="external nofollow noopener noreferrer noopener" target=_blank href="http://connect.qq.com/widget/shareqq/index.html?url=https://news.slqwq.cn/p/fe9.html&title=Typescript 基础类型详解 - Hajeekn RSSHUB&pics=https://picsum.photos/400/300?random=7414&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-qzone rel="external nofollow noopener noreferrer noopener" target=_blank href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://news.slqwq.cn/p/fe9.html&title=Typescript 基础类型详解 - Hajeekn RSSHUB&pics=https://picsum.photos/400/300?random=7414&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-weibo rel="external nofollow noopener noreferrer noopener" target=_blank href="http://service.weibo.com/share/share.php?url=https://news.slqwq.cn/p/fe9.html&title=Typescript 基础类型详解 - Hajeekn RSSHUB&pics=https://picsum.photos/400/300?random=7414&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a></div></div></div></div><div class=prev-next><a class=prev href=/p/f164.html><p class=title><i class="fas fa-chevron-left" aria-hidden=true></i>塔利班宣布控制85%领土</p><p class=content>「塔利班」织代表在莫斯科召开新闻发布会，俄罗斯。7月9日，塔利班代表宣称已控制阿富汗全国85%领土，占领至少250个地区，包括阿富汗与伊朗、中国接壤的边境口岸。塔利班声称不寻求武力夺取国...</p></a><a class=next href=/p/f7a4.html><p class=title>印度外长访问俄罗斯<i class="fas fa-chevron-right" aria-hidden=true></i></p><p class=content>俄罗斯外交部长 Sergei Lavrov 与印度外长 S. Jaishankar 举行联合新闻发布会，莫斯科。7月9日，印度外交部长访问莫斯科并与俄外长举行会谈，双方宣布将在新冠疫苗制...</p></a></div></article></div><aside class=l_side><section class="widget toc-wrapper shadow desktop mobile" id=toc-div><header><i class="fas fa-list fa-fw" aria-hidden=true></i> <span class=name>本文目录</span></header><div class=content><ol class=toc><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Boolean</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Number</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>String</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Array</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Tuple（元组）</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Enum (枚举)</span></a><ol class=toc-child><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>Numeric enums （数字枚举）</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>String enums(字符串枚举)</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>Heterogeneous enums （异构枚举）</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>计算成员和常量成员</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>联合枚举和枚举成员类型（Union enums and enum member types）</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>运行时的枚举</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>编译时的枚举</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>反向映射 （Reverse mappings）</span></a><ol class=toc-child><li class="toc-item toc-level-4"><a class=toc-link><span class=toc-text>const 枚举 （const enums）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>外部枚举 （Ambient enums）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Unknown</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Any</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Void</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Null 和 Undefined</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Never</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>Object</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>参考资料</span></a></li></ol></div></section></aside><script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Typescript 基础类型详解";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script></div><footer class="footer clearfix"><br><br><div class=aplayer-container></div><br><div class=social-wrapper></div><div><p>博客内容遵循 <a target=_blank rel=noopener href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p></div><div><p><span id=lc-sv>本站总访问量为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次</span> <span id=lc-uv>访客数为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 人</span></p></div>本站使用 <a href=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1 target=_blank class=codename>Volantis</a> 作为主题<div class=copyright><p><a href="/">Copyright © 2017-2020 XXX</a></p></div></footer><a id=s-top class="fas fa-arrow-up fa-fw" href=javascript:void(0)></a></div></div><div><script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script><script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script><script src=https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js></script><script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script><script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script><script defer src=https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js></script><script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script><script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script><script defer src=https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js></script><script src=/js/valine.js></script><script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script><script src=/js/app.js></script><script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script><script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://news.slqwq.cn' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script><script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script><script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script><script src=https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js></script><script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script></div></body></html>

@@ -1,0 +1,878 @@
+<!DOCTYPE html><html lang=zh-CN><head hexo-theme=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=on><link rel=dns-prefetch href=https://cdn.jsdelivr.net><link rel=preconnect href=https://cdn.jsdelivr.net crossorigin><meta name=renderer content=webkit><meta name=force-rendering content=webkit><meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1"><meta name=HandheldFriendly content=True><meta name=apple-mobile-web-app-capable content=yes><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1"><link rel=preload href=/css/first.css as=style><title>十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧 - Hajeekn RSSHUB</title><link rel=alternate href=/atom.xml title="Hajeekn RSSHUB" type=application/atom+xml><meta name=referrer content=no-referrer><link rel=stylesheet href=/css/diy.css><link rel=stylesheet href=/css/first.css><link rel=stylesheet href=/css/style.css media=print onload="this.media='all';this.onload=null"><noscript><link rel=stylesheet href=/css/style.css></noscript><script id=loadcss></script><script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script><noscript><style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style><div class=kill-noscript><h1><b>抱歉，您的浏览器无法访问本站</b></h1><h3>本页面需要浏览器支持（启用）JavaScript</h3><br><a target=_blank rel=noopener href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a></div></noscript></head><body><header id=l_header class="l_header always shadow blur show"><div class=container><div id=wrapper><div class=nav-sub><p class=title></p><ul class="switcher nav-list-h m-phone" id=pjax-header-nav-list><li><a id=s-comment class="fas fa-comments fa-fw" target=_self href=javascript:void(0)></a></li><li><a id=s-toc class="s-toc fas fa-list fa-fw" target=_self href=javascript:void(0)></a></li></ul></div><div class=nav-main><a class="title flat-box" target=_self href="/"><img no-lazy class=logo src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png></a><div class="menu navigation"><ul class="nav-list-h m-pc"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></div><div class=m_search><form name=searchform class="form u-search-form"><i class="icon fas fa-search fa-fw"></i> <input type=text class="input u-search-input" placeholder=Search...></form></div><ul class="switcher nav-list-h m-phone"><li><a class="s-search fas fa-search fa-fw" target=_self href=javascript:void(0)></a></li><li><a class="s-menu fas fa-bars fa-fw" target=_self href=javascript:void(0)></a><ul class="menu-phone list-v navigation white-box"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></li></ul></div></div></div></header><div id=l_body><div id=l_cover><div id=full class="cover-wrapper post dock" style="display: none;"><div class="cover-bg lazyload placeholder" data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div><div class=cover-body><div class=top><p class=title>Volantis</p></div><div class=bottom><div class="menu navigation"><div class=list-h><a href="/v4/getting-started/" id=v4getting-started><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg><p>文档</p></a> <a href="/faqs/" id=faqs><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg><p>帮助</p></a> <a href="/examples/" id=examples><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg><p>示例</p></a> <a href="/contributors/" id=contributors><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg><p>社区</p></a> <a href="/archives/" id=archives><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg><p>博客</p></a> <a target=_blank rel=noopener href="https://github.com/volantis-x/hexo-theme-volantis/" id=https:githubcomvolantis-xhexo-theme-volantis><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg><p>源码</p></a></div></div></div></div><div id=scroll-down style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div></div></div><div id=safearea><div class=body-wrapper id=pjax-container><div class=l_main><article class="article post white-box reveal md shadow article-type-post" id=post itemscope itemprop=blogPost><div class=headimg-div><a class=headimg-a><img class=headimg src=https://img.pmcaff.com/FrQRWaWyIMkmVXkBC1AvplZJ33uf-picture></a></div><div class=article-meta id=top><a title=十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧 href=/p/4b17.html><img class=thumbnail src=https://img.pmcaff.com/FrQRWaWyIMkmVXkBC1AvplZJ33uf-picture></a><h1 class=title>十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧</h1><div class=new-meta-box><div class="new-meta-item author"><a class=author target=_blank href="https://docs.rsshub.app/" rel="nofollow noopener"><img no-lazy src=https://i.loli.net/2019/04/23/5cbeb7e41414c.png><p>RSSHub</p></a></div><div class="new-meta-item category"><a class=notlink><i class="fas fa-folder-open fa-fw" aria-hidden=true></i> <a class=category-link href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/">新媒体</a><span class=sep></span><a class=category-link href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/PMCAFF/">PMCAFF</a><span class=sep></span><a class=category-link href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/PMCAFF/%E4%BB%8A%E6%97%A5%E6%8E%A8%E8%8D%90-%E7%B2%BE%E9%80%89/">今日推荐 / 精选</a></a></div><div class="new-meta-item date"><a class=notlink><i class="fas fa-calendar-alt fa-fw" aria-hidden=true></i><p>发布于：2021年6月28日</p></a></div><div class="new-meta-item browse leancloud"><a class=notlink><div id=lc-pv data-title=十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧 data-path=/p/4b17.html><i class="fas fa-eye fa-fw" aria-hidden=true></i><span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次浏览</div></a></div></div></div><div><pre><style>
+#articleCont &#123;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  word-wrap: break-word;
+&#125;
+#articleCont :first-child &#123;
+  margin-top: 0 !important;
+&#125;
+#articleCont h1,
+#articleCont h2,
+#articleCont h3,
+#articleCont h4,
+#articleCont h5,
+#articleCont h6 &#123;
+  margin: 40px 0 20px;
+&#125;
+#articleCont h1 &#123;
+  font-size: 24px;
+&#125;
+#articleCont h2 &#123;
+  font-size: 22px;
+&#125;
+#articleCont h3 &#123;
+  font-size: 20px;
+&#125;
+#articleCont h4 &#123;
+  font-size: 18px;
+&#125;
+#articleCont h5 &#123;
+  font-size: 16px;
+&#125;
+#articleCont i &#123;
+  font-style: italic;
+&#125;
+#articleCont p,
+#articleCont div &#123;
+  word-wrap: break-word;
+  margin: 14px 0;
+  text-align: justify;
+&#125;
+#articleCont blockquote &#123;
+  border-left: 6px solid #ddd;
+  padding: 5px 0 5px 10px;
+&#125;
+#articleCont blockquote p:last-child &#123;
+  margin-bottom: 0;
+&#125;
+#articleCont .simditor-body blockquote :last-child &#123;
+  margin-bottom: 0;
+&#125;
+#articleCont a &#123;
+  color: #82b64a;
+&#125;
+#articleCont a:visited &#123;
+  color: #82b64a;
+&#125;
+#articleCont a:hover &#123;
+  color: #74a342;
+&#125;
+#articleCont img &#123;
+  max-width: 100%;
+  height: auto;
+&#125;
+#articleCont hr &#123;
+  margin: 19px 0;
+  border: none;
+  border-top: solid 1px #ddd;
+&#125;
+#articleCont ol &#123;
+  list-style-type: decimal;
+&#125;
+#articleCont ol li &#123;
+  list-style-type: decimal;
+&#125;
+#articleCont ul &#123;
+  list-style-type: disc;
+  padding-left: 40px;
+&#125;
+#articleCont ul li &#123;
+  list-style-type: disc;
+&#125;
+#articleCont table &#123;
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+  line-height: 1.7;
+&#125;
+#articleCont table thead &#123;
+  background: #f9f9f9;
+&#125;
+#articleCont table th,
+#articleCont table td &#123;
+  border: solid 1px #ccc;
+  text-align: left;
+  vertical-align: top;
+  padding: 2px 4px;
+  height: 30px;
+  min-width: 40px;
+  box-sizing: border-box;
+&#125;
+#articleCont pre &#123;
+  white-space: pre-wrap;
+&#125;
+</style><h3>序</h3><p>上半部分文章主要围绕指标，包括选定关键指标（主要指标VS次要指标），从关键结果指标拆解出过程指标，并定下阶段性目标。这些是数据分析的基础工作，在没有做好之前，不建议直接就开始做功能、打点取数等等。如果这部分已经做好了，那么可以看接下来的文章（<a href=https://www.pmcaff.com/article/2933578371983488 target=_blank rel="noreferrer noopener">没有的话建议戳上半篇</a>）。</p><p>接下来讲一下有了指标之后到底怎么去设计打点和实验，包括怎么分析数据结果、怎么作出直观的图表和指标的持续监控，还是比较实用的技能。 学姐会配合超多实用的案例，尽可能讲得清晰一些，帮大家排雷避坑。</p><hr><h3>一、打点详解</h3><p>打点和实验是同步设计的，因为这两者会互相影响。有些童鞋对DAU、交易额、转化率等大指标监控比较重视，但是拆分到某个页面、某个功能的打点就设计得大条了一些，导致经常要等数据结果出来了，才发现还需要补一些打点。所谓巧妇难为无米之炊，如果打点没打好，连数据源都没有，数据分析能力再强也没用。</p><p>打点分为前端（客户端）打点和后端（服务端）打点两种。<br></p><p>先介绍常用的前端打点，这类打点主要是用来记录<b>用户行为</b>的，也就是当用户和你的页面产生了交互之后（比如点击了某个按钮或者打开了某个页面），本地产生一条包含很多字段的信息（相当于xls的一行），等到一定的时间之后上传到服务器上，然后通过数据清洗、入库等等，就能提取出来进行数据分析了。</p><p>前端打点必须包含的字段类型（相当于xls的表头）有以下三大类：</p><p><b>基础信息：</b>比如用户的<b>渠道、平台、操作系统、手机型号、用户身份唯一标识（uuid、token）、页面id</b>等等，以便后续做一些基本的分析。也可以再进一步，根据业务特性加上一些字段：比如一个LBS的App可以把城市、经纬度也加到基础信息中，比如一个交易平台可以把用户浏览商品的sku id或下单的order id带上，只要用户有和商品id、下单相关的操作，这两个字段就都可以记录上。这么做的好处是不需要产品/运营每次额外提需求，默认每条打点都会带上这些字段，这样不容易漏。</p><p><b>事件信息：</b>事件也就是用户的一次操作行为，是前端打点中最重要的部分。</p><p>首先，我们要给每个事件起一个<b>唯一的名称</b>。比如用户和banner发生了一些不得不说的交互（比如点击），这个事件可以叫“banner”，有些公司用的是随机生成的字符比如“5x_aswed”，看上去像是猫咪在键盘上随便按的，也有些公司用的是中文名称比如“中通”（不是快递，是中间通栏的意思），这个不打紧，只要是唯一标示都可以。</p><p>其次，我们需要（一个字段）记录<b>这次操作的类型</b>，一般来说有这4种：页面/模块<b>加载</b>->模块<b>展示</b>（加载完毕）->模块<b>点击</b>-><b>提交</b>成功，比如用户打开某电商App首页，这时候首页已经开始加载了（1），过了0.01秒之后首页的banner加载完毕且第一帧展示在用户的面前（2），然后过了2妙轮播到第二帧（3），用户点击第二帧（4），这其中（1）就是加载事件，（2）、（3）都是展示事件，而（4）是点击事件。这时候（4）的UV/（3）的UV才是第二帧banner的UV转化率，而不是（4）/（1）或者（4）/（2），因为发生（1）和（2）事件时，这一帧banner根本没有展示在用户的面前。</p><p><img alt="数据分析 1.png" src=https://img.pmcaff.com/FrQRWaWyIMkmVXkBC1AvplZJ33uf-picture class=lazyload data-srcset=https://img.pmcaff.com/FrQRWaWyIMkmVXkBC1AvplZJ33uf-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=1200 height=664 coffee-w=1566px coffee-h=664px coffee-format=png referrerpolicy=no-referrer><br></p><p style=text-align:center;>截图摘自淘宝App<br></p><p>那么提交事件是什么时候记录的呢？因为点击banner之后会直接进入活动landing页面，所以不需要记录提交。但在某些情况下，比如用户在某件衣服的商品详情页点击了“领券购买”，弹出了选颜色和选尺码的半窗，此时用户再点击半窗上的的“领券购买”（5），会出现一个请选择尺码的提示，选好了之后，再点击“领券购买”（6），这才“购买”的这个行为<b>成功地提交</b>了，此时系统还会进行一个自动领券的操作，然后推进到下一个页面（7），所以这时候（5）是点击事件（点击了，但是没有成功提交），（6）才是提交事件。如果选择颜色、尺码的样式没设计好，就会导致点击->提交得转化率不佳，所以只记录点击显然是不够的。</p><p><img alt="图片 7.png" src=https://img.pmcaff.com/FmJrjTrCzjAP8OaajzG0OaznPdj6-picture class=lazyload data-srcset=https://img.pmcaff.com/FmJrjTrCzjAP8OaajzG0OaznPdj6-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=1200 height=397 coffee-w=1274px coffee-h=397px coffee-format=png referrerpolicy=no-referrer><br></p><p style=text-align:center;>截图摘自淘宝App</p><p>那么有些童鞋可能会问，那直接看下一个页面的UV，也就是（7）的展示量不就行了吗？其实也不然，如果网络不佳会导致用户没有推进到下一个页面（特别是在双十一的时候，网络挤爆了），所以从上个页面提交（6）->下个页面加载（7），当中还可能漏掉一部分用户。因此在这种情况下，提交的事件类型就很有必要了。当然，这种情况相对复杂，大部分时候我们记录页面的展示、模块的展示和点击，是够用的。</p><p>最后，除了事件名称、事件类型，我们要记录一些事件相关的<b>附加信息</b>。比如刚刚说的banner的第几帧，如果每一帧都作为一个独立事件重新命名，那就非常麻烦了（比如banner_1,banner_2……万一有10个banner呢），这时候我们再加上一个字段index，在banner展示和点击的时候都记录下一个额外的数字，比如1、2、3等，用来记录第X帧（当然程序员小哥哥/小姐姐可能会和你说从0标起）。如果banner在某段时间里面是不固定的，或者千人千面的，比如小明在第一帧看到了减脂餐的banner，小刚在第一帧看到了连衣裙的banner，那我们可以再记录一个字段title，把banner的活动名称记录下来，那么小明点击banner就会产生事件名称“banner”，事件类型“click”（点击），index“1”，title“减脂餐”这四个字段了。</p><p><b>归因信息：</b>只记录基本信息和事件信息，还是没有办法统计出在文章上半部分提到的——根据路径（比如首页不同的模块）去拆解访购率（下单UV/模块访问UV），因为我们知道用户下单的前一个页面是商品详情页，再前一个页面可能是商品列表页，但并不知道用户到底是不是从首页的哪个入口进来的。当然，你可以去近似，比如点击过banner的用户在X分钟内访问了商品详情页，但是这个时间是很难把控的，导致不够精准。这时候我们需要加上一个归因信息的字段，也就是标识出用户的关键行为到底是通过哪个路径产生的。</p><p>比如我们可以把某橘色电商App的模块简单分为搜索框、icon位、运营位、轮播banner、猜你喜欢等，那么我们需要一个字段来记录本次购买到底是哪个模块带来的。原理其实也很简单，就是在用户从每个模块点击到下一个路径的时候带上这个字段就行了，比如用户在点击了banner之后可能会进到各种类似的页面，不管是活动页、商品详情页还是店铺页，只要用户产生任何交互（只在关键的页面记录也可以），我们就把用户“banner”这个信息记录在归因的字段上，直至最后下单。如果用户在下单前，又回退到了其他首页的模块，比如点击了搜索框，那么同理，我们只需要在这个时候把“搜索框”之后的任何用户行为（直至下单）都在归因字段记录下“搜索框”就行了。这样，我们就可以分析出，首页各个模块的访购率到底是什么水平了。</p><p>前端的打点介绍得差不多了，后端打点一般是在服务器的一些技术打点，比如用来统计95线、98线、端到端响应速度等性能，一般策略产品会接触得多一点（比如搜索产品），原理也是类似的，在用户和服务端发生交互的时候做记录。如果前端打点的数据取出来非常难以置信，但是研发小哥哥/小姐姐又觉得“我这里是好的”，那么除了请喝TA奶茶之外，也可以前后交叉对比下，比如我们把支付提交成功的前端打点和服务器收到支付成功请求的打点做个对比，误差如果稳定在百分之几的话，那么基本上没有问题啦。</p><p>讲了这么多，学姐再举一个栗子加深印象吧，看一个列表页功能打点的文档，为了阅读方便，打点就都用中文写了：</p><p>*除了基本信息不需要赘述外（包括用户手机型号、平台、页面id等等），在每次用户提交的时候我们还会记录一个Query_id，用这个id可以去服务端的日志中查看本次搜索的详细情况（相当于后端打点），包括各种用户本次搜索的各种输入信息和我们输出给用户的信息（比如到底展示了哪些商品等等），用于后续搜索策略的优化。</p><p style=text-align:center;><img alt="图片 9.png" src=https://img.pmcaff.com/FrZEIR2p_K9Bqp1gfvl9S3zlQcIk-picture class=lazyload data-srcset=https://img.pmcaff.com/FrZEIR2p_K9Bqp1gfvl9S3zlQcIk-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=550 height=429 coffee-w=1016px coffee-h=792px coffee-format=jpeg referrerpolicy=no-referrer></p><p>总之，打点要有详有略，既能保证用户的每一个步骤的重要信息都要能有效提取到，又要善于巧用单独的字段来减轻后续数据分析的工作量。另外，打点设计完之后，别忘了和相关同事（运营、BI等）确认是否能满足所有想看的指标，不同岗位关心的指标会有侧重点不同，大家要确保万无一失哦～ </p><p>如果大家对打点设计还有什么不清楚的地方，也可以关注学姐的公众号：<b>海贝学姐</b>在后台留言，学姐在线答疑～</p><hr><h3>二、 科学设计实验</h3><p>有了打点之后，我们可以统计到一些功能的详细数据，用来验证这个功能/项目对关键指标是否真的有帮助，或者是否还有提升的空间。影响关键指标的因素是很多的，比如节假日、淡旺季、广告投放等等各种情况，所以我们还需要对想要分析的项目设计“实验”来获取更精准的数据，常见的有以下几种方式：</p><h4>1.   <b>A/B测试</b></h4><p>这类测试比较适合<b>数据随时间波动较大</b>的垂直类目，比如快消、服装品牌等。</p><p>A组就是空白组——原方案，B组是实验组——优化后的方案，这样做为了要排除季节、突发事件、新的商品、宣传活动等等各种情况对产品数据造成的波动。需要注意两点：</p><ul><li>确保流量切分的时候尽量是均等的，一段时间内，A组和B组的UV/PV几乎相同，这个误差如果接近10%，实验的可信度就会大大降低，说明在分流量的时候有bug</li><li>确保流量切分的时候不存在任何用户画像上明显的差异。比如A组女性更多，B组男性更多，就会影响实验结果。很多时候程序生成的“随机”其实是伪随机，所以一定要警惕切的时候并没有做到真正的随机</li></ul><p>如果试验结果看上去比较异常，我们可以做AA实验来确定下数据的准确性，即A组和B组都用原方案，来看下数据是否相同。</p><h4><b>2.  </b><b>灰度测试</b></h4><p>灰度发布和A/B测试的原理相同的，但是流量不会均匀分配，一般是切某个比例的流量给到B组，比如5%，10%等。<b>比较适合量级大、有影响力的核心页面</b>，比如淘宝首页改版就会小范围先切一部分流量做灰度测试，这也很适合淘宝这样强运营的App，运营可以通过灰度测试的结果对策略进行调整，避免直接全量上线影响整个App的指标。这种方案适合有一定研发能力的平台，因为对流量的切分提出了更高的要求，所以大厂用得更多一些。</p><h4><b>3.  </b><b>直接发版</b></h4><p>直接进行发布新功能/新版本，分别看老版本和新版本的数据，计算某个固定时间段内平均值的提升。直接发版适合数据比较稳定的平台，且对发布的产品功能很有信心。比如产品之神张小龙就很少搞什么A/B测试、灰度测试啥的，很多改版就是直接上（比如微信7.0神马的），当然我们都不是产品之神，如果不能确保这段时间数据比较稳定的话，还是乖乖做AB或者灰度先～</p><p>如果是通过更新客户端来进行版本发布（服务端发布、小程序等不用考虑），要注意<b>等新版本覆盖大部分用户了之后再看数据会比较准</b>，因为先更新的用户往往是对平台比较忠诚的用户，只看这部分用户，数据会偏高。比如我们发现新版本发布后两周，80%的用户都更新完了，那么就可以对比新版本发布前老版本1个月数据的均值，和新版本发布之后第3周到第7周数据的均值（也是1个月），来进行对比。其实像微信出的“炸shi”之类的小彩蛋，其实很多时候是为了去催促用户更新到新版本～</p><hr><h3>三、分析数据结果</h3><p>经历了设计打点和实验，又等待了一下版本更新覆盖率之后，我们终于取到了数据，然而结果往往充满了惊喜（吓）。就算数据非常符合预期，在汇报的时候有数据和图表的那几页往往需要费劲去解释。下面就教大家比较实用的几招，从此汇报数据无烦恼。</p><h4><b>1.  </b><b>排除干扰项</b></h4><p>说到汇报数据，往往是数据跌了惨兮兮，数据涨了又要赶紧解释原因，不然等到下周环比跌的时候又要解释了。记得之前学姐遇到过几个月DAU疯涨，当时分析了半天没找到原因（当然现在知道啦），当时老板打趣说唯一的变化就是前任老板离职了，可以说是甜蜜的负担了。数据总是有这么多干扰项，像玩剧本杀一样，我们会发现很多看上去可疑的线索，其中大部分都是干扰项，要排除这些才能找到真正的“凶手”。</p><p>比如学姐的一个童鞋小超因为好玩做了一个扔手机的App（不建议大家下载，很费手机），这个月突然发现App中广告的曝光量跌了三分之一，收入也随之跌了。仔细一看，发现不是这个月跌了，而是上个月有几天数据猛涨。</p><p style=text-align:center;><img alt="图片 10.png" src=https://img.pmcaff.com/Fk2ik9I3Xxjqwb9ooCNbyoVMLp3l-picture class=lazyload data-srcset=https://img.pmcaff.com/Fk2ik9I3Xxjqwb9ooCNbyoVMLp3l-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=400 height=242 coffee-w=866px coffee-h=524px coffee-format=png referrerpolicy=no-referrer><br></p><p>再进一步拆解，发现是某个安卓商店的下载量在那几天激增，于是发现自己的App在那几天被这个安卓商店推荐了一下下。排除这几天后，数据看上去就这么夸张了。</p><p>大家在分析数据时，最直接的就是先按照时间画出数据曲线，看看有没有异常的点，把异常点排除之后再去看数据。定位了时间段（点）之后，就像锁定了“杀人凶器”，接下来只要找到是谁使用的就行了。我们可以进一步拆解（不知道怎么拆解的可以看文章的上半部分），看是否有天气、城市、渠道、广告、销售、其他产品功能、运营活动等等各因素的影响，当然这些因素和业务有关，如果你完全没有头绪，可能需要更进一步去了解业务了（比如问问相关部门的同事）。</p><p>技术原因也会影响到产品数据，比如某个服务器在某天的超时的访问特别多，那自然会影响产品的转化率了。</p><p>如果这些因素都没有变化，我们可以更跳脱去考虑，比如是否有政策、人口、经济是否对整个行业的大盘产生了影响，从而进一步影响到了自己的业务。</p><h4><b>2.  </b><b>选择最直观的图表</b></h4><p>自己好不容易推理出了“真凶”，但是一起玩剧本杀的小伙伴竟然没听懂你的推理，还反手投了你？这就和分析完数据之后，复盘汇报时同事不能理解这些数据一样苦恼。到底选择什么样的图表来表达数据才能做到清晰、高效？打开Excel我们会发现有N种图表（截图有点丑大家不要介意），咱就讲几种常用的↓↓↓：</p><p style=text-align:center;><img alt=图片11.png src=https://img.pmcaff.com/Fi9ZAzKVQbxAMpINew1LbX6YLPip-picture class=lazyload data-srcset=https://img.pmcaff.com/Fi9ZAzKVQbxAMpINew1LbX6YLPip-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=250 height=140 coffee-w=576px coffee-h=334px coffee-format=png referrerpolicy=no-referrer><br></p><p>1)   柱形图&条形图。柱形图的一般用于表达某个指标随着时间（或者某个变量）的变化，比如每个季度的销售额、MAU均值等。如果变量的文案比较长，我们也可以用横过来的条形图去呈现，柱子之间文字太多挤不下，比如首页每个模块的点击率。总之，柱状图更强调趋势变化，条形图更强调比较。<span style=color:rgb(51,51,51);>↓</span>↓↓（MAU的单位是万，漏标注了，下同）</p><p style=text-align:center;><img alt=图表0.png src=https://img.pmcaff.com/FjGKECgnsB4GIueqQwACY8pOYoBV-picture class=lazyload data-srcset=https://img.pmcaff.com/FjGKECgnsB4GIueqQwACY8pOYoBV-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=333 height=180 coffee-w=1663px coffee-h=902px coffee-format=png referrerpolicy=no-referrer><img alt=图表0-a.png src=https://img.pmcaff.com/Fk81B-YkG5u4NTvOO0gSR_TnMWpN-picture class=lazyload data-srcset=https://img.pmcaff.com/Fk81B-YkG5u4NTvOO0gSR_TnMWpN-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=300 height=181 coffee-w=1659px coffee-h=1003px coffee-format=png referrerpolicy=no-referrer><br></p><p style=text-align:center;>左为柱形图，右为条形图</p><p>2)   折线图和柱形图类似，也强调趋势变化。一般用于更细的数据，比如分天、分小时的数据，MAU按照每个季度平均一下还能用柱形图，但是如果过去一个季度DAU的数据，那用柱状图肯定就画不下了，这时一般就用折线图了（比如上面一节提到的分天拆解）。</p><p>3)   柱形图+折线图，既可以表达绝对数值，又可以表达出趋势，学姐个人还蛮喜欢的。比如两年内<b>每个季度的MAU（柱状）和其年同比（曲线）</b>，这样我们不仅可以看出每个季度数值和变化趋势，也可以看出年度的变化趋势。<span style=color:rgb(51,51,51);>↓</span>↓↓</p><p style=text-align:center;><img alt=图表1.png src=https://img.pmcaff.com/FmpTplupuVGTy__Psj2cIkVu0zAE-picture class=lazyload data-srcset=https://img.pmcaff.com/FmpTplupuVGTy__Psj2cIkVu0zAE-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=550 height=312 coffee-w=1659px coffee-h=944px coffee-format=png referrerpolicy=no-referrer><br></p><p>4)   饼图，强调占比。比如我们要统计不同路径下单量的占比，这时候就可以用饼图了。很多童鞋在这个时候还是用普通的柱形图/条形图，这样不如饼图直观。</p><p>5)   漏斗图，顾名思义在表达漏斗的时候比较好用。比如对比新用户和老用户（或者不同渠道、平台等）在打开App->商品详情页->下单成功每个漏斗的UV，不过转化率需要自己标注下，学姐觉得这图和直接用表格的直观程度其实也差不多<span style=color:rgb(51,51,51);>↓</span>↓↓</p><p style=text-align:center;><img alt=图片20.png src=https://img.pmcaff.com/FpDgfadvggTJDICSD8aEdf4xYvbB-picture class=lazyload data-srcset=https://img.pmcaff.com/FpDgfadvggTJDICSD8aEdf4xYvbB-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=450 height=212 coffee-w=908px coffee-h=428px coffee-format=png referrerpolicy=no-referrer><br></p><p>如果是表达两类用户转化漏斗的对比，倒还不如用两个条形图拼一起（左边这个需要选中两个坐标轴然后对刻度线选择逆向类别）<span style=color:rgb(51,51,51);>↓</span>↓↓</p><p style=text-align:center;><img alt=漏斗.png src=https://img.pmcaff.com/FgQxQHOKdHr4y1BODiFHgBuG7DSX-picture class=lazyload data-srcset=https://img.pmcaff.com/FgQxQHOKdHr4y1BODiFHgBuG7DSX-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=500 height=243 coffee-w=2186px coffee-h=1067px coffee-format=png referrerpolicy=no-referrer><br></p><p>稍微复杂一些的图表其实也就是一些基本图表的组合，比如百分比柱形图，有邻居的柱状图等（官方名字是簇状柱形图？好拗口），大家可以根据需求去选取。比如我们要表达每个季度的运营成本，和各项成本占营收的比例时（比如市场营销成本、研发成本、行政管理成本），就可以用前者，强调趋势+占比；表达兄弟部门每个季度销售额PK的时候，就可以用后者，强调趋势+对比。<span style=color:rgb(51,51,51);>↓</span>↓↓</p><p style=text-align:center;><img alt=图表21.png src=https://img.pmcaff.com/FmD-iuJkFTqbLLFQx5bVPpFiIZCf-picture class=lazyload data-srcset=https://img.pmcaff.com/FmD-iuJkFTqbLLFQx5bVPpFiIZCf-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=260 height=232 coffee-w=764px coffee-h=682px coffee-format=png referrerpolicy=no-referrer><img alt=图表4.png src=https://img.pmcaff.com/FoAMRm8c3Tyu-lLJlQhIq2UlIrTU-picture class=lazyload data-srcset=https://img.pmcaff.com/FoAMRm8c3Tyu-lLJlQhIq2UlIrTU-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=344 height=229 coffee-w=628px coffee-h=420px coffee-format=png referrerpolicy=no-referrer><br></p><p style=text-align:center;>左图摘自B站财报，右图是每个季度销售额PK的例子</p><p>选择图表类型有点像 “交互”，那么学姐再分享几个作图的小技巧，相当于图表的“视觉”，可以有效提升沟通效率：</p><p>–   <b>适当标注。</b>默认的图表设计很高级，完全没有数字，但是我们为了要汇报的效率，还是要把关键的数据标注上去，比如交易额、DAU、同比等。另外，文字也要尽量标得清晰，比如饼图的默认样式经常是把图例标注在饼图下方，这样看起来很累，而且投屏的颜色有变化或者图例的颜色很像，很容易对错，可以选择文字直接在饼上的样式。</p><p>–   <b>强调重点。</b>如果某个数据很出彩或者需要重点关注，我们可以把相应的数字加粗加大，比如饼图的某块饼就可以单独放大，比如柱子的颜色改一改，就能成功引起大家（老板）的注意，摘自B站财报（每季度增值服务营收），猛男粉太醒目了叭<span style=color:rgb(51,51,51);>↓</span>↓↓</p><p style=text-align:center;><img alt=图表22.png src=https://img.pmcaff.com/FpFgb8lTpLyihH98e-I8v1V2IFtg-picture class=lazyload data-srcset=https://img.pmcaff.com/FpFgb8lTpLyihH98e-I8v1V2IFtg-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=500 height=333 coffee-w=1302px coffee-h=868px coffee-format=png referrerpolicy=no-referrer></p><p>–   <b>坐标轴范围合适。</b>默认的坐标轴经常会最小值不是零，而且坐标值最大值比我们数据的最大值大很多。好的坐标轴应该是从零标起，并且最大值只是略大于我们数据的最大值，这样不容易放大数据波动，并且又能在把图表的柱形或者条形展示得比较清晰。如果有特殊情况要用某个非零的数字作为坐标轴的起点，一定要非常谨慎地标注清楚。</p><p>–   <b>备注口径。</b>每个公司都对不同指标都有不同的定义和叫法，一般比较明确的指标我们不需要额外备注，有些用得少的指标我们还是要把计算口径标得很清楚，包括数字从哪里取来的、时间段、版本，计算公式等等。</p><p>来，学姐给一个图表的Before & After效果图，当然如果不需要强调2020年的数据就不需要像学姐这样把柱子的颜色改成紫色了（低调一点～）<span style=color:rgb(51,51,51);>↓</span>↓↓   </p><p style=text-align:center;><img alt=图表6a.png src=https://img.pmcaff.com/FsRKR2kru6H53GTh3bF9FiLt8-5s-picture class=lazyload data-srcset=https://img.pmcaff.com/FsRKR2kru6H53GTh3bF9FiLt8-5s-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=300 height=191 coffee-w=1595px coffee-h=1017px coffee-format=png referrerpolicy=no-referrer><img alt=图片6b.png src=https://img.pmcaff.com/FlBf-d1Old0spqjmPUXeka9UFpfh-picture class=lazyload data-srcset=https://img.pmcaff.com/FlBf-d1Old0spqjmPUXeka9UFpfh-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=315 height=191 coffee-w=1659px coffee-h=1012px coffee-format=png referrerpolicy=no-referrer><br></p><p style=text-align:center;>左图为默认图表，右图为优化后</p><h4>如果对打点、分析数据、做图表感兴趣，可以关注公众号：<b>海贝学姐</b>。在后台留言获取模版～</h4><hr><h3>四、持续监控——数据产品的类型及其适用场景</h3><p style=text-align:center;>其实从打点到分析结果之间，还有一个步骤是<b>使用数据产品取数</b>。不同的数据产品的适用场景不同，这几年“数据产品经理”这个概念也蛮火的，可见其重要性。虽然我们不是专业的数据产品和BI，不过为了日常数据分析工作可以顺利进行，我们需要对一些指标进行重点监控，所以也需要了解数据产品的基础知识。常见的数据产品有这几种类型↓↓↓<img alt=数据分析-5.png src=https://img.pmcaff.com/Fj1u9pHYXyzpsgfno_-PNpNuctZJ-picture class=lazyload data-srcset=https://img.pmcaff.com/Fj1u9pHYXyzpsgfno_-PNpNuctZJ-picture srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width=600 height=250 coffee-w=1324px coffee-h=552px coffee-format=png referrerpolicy=no-referrer></p><p>–   SQL语句，想怎么查数就可以怎么查，适合低频个性化需求，比如某个新功能上线之后，往往会把数据看得详细一些，以便更全面了解功能的使用情况。缺点是容易存在安全隐患，比如有一些机密、敏感的表格不适合给全部产品开放权限，比如公司内部人员的薪资、年龄，用户的电话号码、其他部门的营收等等，所以在大公司往往会花精力去搭建一套比较完整的权限体系，避免泄漏商业机密。有些产品童鞋不太会写SQL，学姐建议大家可以买本大学的SQL教科书看看，跳过建数据库这一块，直接学习一些常规的查询就好了（基本的Select from，join之类），这样方便自己直接去查数据。</p><p>–   取数工具，就是把某些中频使用的SQL查询语句固化下来。产品可以自己输入日期范围、类目等去查询交易额等。如果不懂SQL的产品可以找BI或者BA帮忙写一个取数工具，自己定义一些可以输入的字段就行了。</p><p>–   可视化后台，适合一些中高频监控的过程指标、常见的路径漏斗等，在灵活度方面稍微欠缺一些，但是胜在可以输出图表，易操作、直观，是大家比较常用的。除了大厂是自研的数据品台之外，很多公司用的都是第三方提供的可视化数据后台。</p><p>–   自动化报表，适合高频监控的关键结果指标和过程指标，一般会用表格或图表的形式每日自动发送至邮箱或IM。包含环比、同比、MTD（本月到今天为止）等，方便大家及时发现数据波动，避免大家做月报、周报的时候看到想半天不知道问题出在哪儿。当然，这种日报模版调整频率会更低一些，因为监控的都是最关键的数据。</p><p>关键指标以每日为维度监控只能发现一些产品、运营、销售相关的波动（比如跌了百分之十之类的），如果遇到一些技术性的问题，可能数据一落千丈，等到第二天才发现就已经让公司损失几个亿了。所以一般还会对关键指标有实时监控，比如过去一小时内，订单量比上周同期跌掉一半，就会报警发到手机上，这样及时发现线上bug。</p><h1>公众号：海贝学姐</h1></pre></div><div class=footer><div class=copyright><blockquote><p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p><p>本文永久链接是：<a href=https://news.slqwq.cn/p/4b17.html>https://news.slqwq.cn/p/4b17.html</a></p></blockquote></div></div><div class=article-meta id=bottom><div class=new-meta-box><div class="new-meta-item date" itemprop=dateUpdated datetime=2021-07-11T00:44:49+00:00><a class=notlink><i class="fas fa-edit fa-fw" aria-hidden=true></i><p>更新于：2021年7月11日</p></a></div><div class="new-meta-item share -mob-share-list"><div class="-mob-share-list share-body"><a class=-mob-share-qq rel="external nofollow noopener noreferrer noopener" target=_blank href="http://connect.qq.com/widget/shareqq/index.html?url=https://news.slqwq.cn/p/4b17.html&title=十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧 - Hajeekn RSSHUB&pics=https://img.pmcaff.com/FrQRWaWyIMkmVXkBC1AvplZJ33uf-picture&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-qzone rel="external nofollow noopener noreferrer noopener" target=_blank href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://news.slqwq.cn/p/4b17.html&title=十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧 - Hajeekn RSSHUB&pics=https://img.pmcaff.com/FrQRWaWyIMkmVXkBC1AvplZJ33uf-picture&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-weibo rel="external nofollow noopener noreferrer noopener" target=_blank href="http://service.weibo.com/share/share.php?url=https://news.slqwq.cn/p/4b17.html&title=十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧 - Hajeekn RSSHUB&pics=https://img.pmcaff.com/FrQRWaWyIMkmVXkBC1AvplZJ33uf-picture&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a></div></div></div></div><div class=prev-next><a class=prev href=/p/2ba4.html><p class=title><i class="fas fa-chevron-left" aria-hidden=true></i>泄露版Windows11 iso镜像文件下载地址</p><p class=content>泄露版Windows11 iso镜像文件下载地址</p></a><a class=next href=/p/49a0.html><p class=title>日落黄昏时 _ PIA RIVEROLA<i class="fas fa-chevron-right" aria-hidden=true></i></p><p class=content></p></a></div></article></div><aside class=l_side><section class="widget toc-wrapper shadow desktop mobile" id=toc-div><header><i class="fas fa-list fa-fw" aria-hidden=true></i> <span class=name>本文目录</span></header><div class=content><ol class=toc><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>序</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>一、打点详解</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>二、 科学设计实验</span></a><ol class=toc-child><li class="toc-item toc-level-4"><a class=toc-link><span class=toc-text>1. A&#x2F;B测试</span></a></li><li class="toc-item toc-level-4"><a class=toc-link><span class=toc-text>2. 灰度测试</span></a></li><li class="toc-item toc-level-4"><a class=toc-link><span class=toc-text>3. 直接发版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>三、分析数据结果</span></a><ol class=toc-child><li class="toc-item toc-level-4"><a class=toc-link><span class=toc-text>1. 排除干扰项</span></a></li><li class="toc-item toc-level-4"><a class=toc-link><span class=toc-text>2. 选择最直观的图表</span></a></li><li class="toc-item toc-level-4"><a class=toc-link><span class=toc-text>如果对打点、分析数据、做图表感兴趣，可以关注公众号：海贝学姐。在后台留言获取模版～</span></a></li></ol></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>四、持续监控——数据产品的类型及其适用场景</span></a></li></ol></div></section></aside><script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="十年大厂产品的数据分析宝典（下）：数据打点、分析、做图表、监控的实用技巧";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script></div><footer class="footer clearfix"><br><br><div class=aplayer-container></div><br><div class=social-wrapper></div><div><p>博客内容遵循 <a target=_blank rel=noopener href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p></div><div><p><span id=lc-sv>本站总访问量为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次</span> <span id=lc-uv>访客数为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 人</span></p></div>本站使用 <a href=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1 target=_blank class=codename>Volantis</a> 作为主题<div class=copyright><p><a href="/">Copyright © 2017-2020 XXX</a></p></div></footer><a id=s-top class="fas fa-arrow-up fa-fw" href=javascript:void(0)></a></div></div><div><script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script><script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script><script src=https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js></script><script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script><script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script><script defer src=https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js></script><script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script><script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script><script defer src=https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js></script><script src=/js/valine.js></script><script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script><script src=/js/app.js></script><script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script><script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://news.slqwq.cn' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script><script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script><script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script><script src=https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js></script><script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script></div></body></html>

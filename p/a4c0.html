@@ -1,0 +1,857 @@
+<!DOCTYPE html><html lang=zh-CN><head hexo-theme=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=on><link rel=dns-prefetch href=https://cdn.jsdelivr.net><link rel=preconnect href=https://cdn.jsdelivr.net crossorigin><meta name=renderer content=webkit><meta name=force-rendering content=webkit><meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1"><meta name=HandheldFriendly content=True><meta name=apple-mobile-web-app-capable content=yes><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1"><link rel=preload href=/css/first.css as=style><title>都 2021 了你居然还在用 WebStorm ？ - Hajeekn RSSHUB</title><link rel=alternate href=/atom.xml title="Hajeekn RSSHUB" type=application/atom+xml><meta name=referrer content=no-referrer><link rel=stylesheet href=/css/diy.css><link rel=stylesheet href=/css/first.css><link rel=stylesheet href=/css/style.css media=print onload="this.media='all';this.onload=null"><noscript><link rel=stylesheet href=/css/style.css></noscript><script id=loadcss></script><script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script><noscript><style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style><div class=kill-noscript><h1><b>抱歉，您的浏览器无法访问本站</b></h1><h3>本页面需要浏览器支持（启用）JavaScript</h3><br><a target=_blank rel=noopener href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a></div></noscript></head><body><header id=l_header class="l_header always shadow blur show"><div class=container><div id=wrapper><div class=nav-sub><p class=title></p><ul class="switcher nav-list-h m-phone" id=pjax-header-nav-list><li><a id=s-comment class="fas fa-comments fa-fw" target=_self href=javascript:void(0)></a></li><li><a id=s-toc class="s-toc fas fa-list fa-fw" target=_self href=javascript:void(0)></a></li></ul></div><div class=nav-main><a class="title flat-box" target=_self href="/"><img no-lazy class=logo src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png></a><div class="menu navigation"><ul class="nav-list-h m-pc"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></div><div class=m_search><form name=searchform class="form u-search-form"><i class="icon fas fa-search fa-fw"></i> <input type=text class="input u-search-input" placeholder=Search...></form></div><ul class="switcher nav-list-h m-phone"><li><a class="s-search fas fa-search fa-fw" target=_self href=javascript:void(0)></a></li><li><a class="s-menu fas fa-bars fa-fw" target=_self href=javascript:void(0)></a><ul class="menu-phone list-v navigation white-box"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></li></ul></div></div></div></header><div id=l_body><div id=l_cover><div id=full class="cover-wrapper post dock" style="display: none;"><div class="cover-bg lazyload placeholder" data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div><div class=cover-body><div class=top><p class=title>Volantis</p></div><div class=bottom><div class="menu navigation"><div class=list-h><a href="/v4/getting-started/" id=v4getting-started><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg><p>文档</p></a> <a href="/faqs/" id=faqs><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg><p>帮助</p></a> <a href="/examples/" id=examples><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg><p>示例</p></a> <a href="/contributors/" id=contributors><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg><p>社区</p></a> <a href="/archives/" id=archives><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg><p>博客</p></a> <a target=_blank rel=noopener href="https://github.com/volantis-x/hexo-theme-volantis/" id=https:githubcomvolantis-xhexo-theme-volantis><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg><p>源码</p></a></div></div></div></div><div id=scroll-down style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div></div></div><div id=safearea><div class=body-wrapper id=pjax-container><div class=l_main><article class="article post white-box reveal md shadow article-type-post" id=post itemscope itemprop=blogPost><div class=headimg-div><a class=headimg-a><img class=headimg src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7889aaab944c1da86c215be13ed6be~tplv-k3u1fbpfcp-zoom-1.image></a></div><div class=article-meta id=top><a title="都 2021 了你居然还在用 WebStorm ？" href=/p/a4c0.html><img class=thumbnail src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7889aaab944c1da86c215be13ed6be~tplv-k3u1fbpfcp-zoom-1.image></a><h1 class=title>都 2021 了你居然还在用 WebStorm ？</h1><div class=new-meta-box><div class="new-meta-item author"><a class=author target=_blank href="https://docs.rsshub.app/" rel="nofollow noopener"><img no-lazy src=https://i.loli.net/2019/04/23/5cbeb7e41414c.png><p>RSSHub</p></a></div><div class="new-meta-item category"><a class=notlink><i class="fas fa-folder-open fa-fw" aria-hidden=true></i> <a class=category-link href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class=sep></span><a class=category-link href="/categories/%E7%BC%96%E7%A8%8B/%E6%8E%98%E9%87%91/">掘金</a><span class=sep></span><a class=category-link href="/categories/%E7%BC%96%E7%A8%8B/%E6%8E%98%E9%87%91/%E4%B8%93%E6%A0%8F/">专栏</a></a></div><div class="new-meta-item date"><a class=notlink><i class="fas fa-calendar-alt fa-fw" aria-hidden=true></i><p>发布于：2021年5月18日</p></a></div><div class="new-meta-item browse leancloud"><a class=notlink><div id=lc-pv data-title="都 2021 了你居然还在用 WebStorm ？" data-path=/p/a4c0.html><i class="fas fa-eye fa-fw" aria-hidden=true></i><span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次浏览</div></a></div></div></div><div><div class=markdown-body><style>.markdown-body&#123;word-break:break-word;line-height:1.75;font-weight:400;font-size:15px;overflow-x:hidden;color:#333&#125;.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6&#123;line-height:1.5;margin-top:35px;margin-bottom:10px;padding-bottom:5px&#125;.markdown-body h1&#123;font-size:30px;margin-bottom:5px&#125;.markdown-body h2&#123;padding-bottom:12px;font-size:24px;border-bottom:1px solid #ececec&#125;.markdown-body h3&#123;font-size:18px;padding-bottom:0&#125;.markdown-body h4&#123;font-size:16px&#125;.markdown-body h5&#123;font-size:15px&#125;.markdown-body h6&#123;margin-top:5px&#125;.markdown-body p&#123;line-height:inherit;margin-top:22px;margin-bottom:22px&#125;.markdown-body img&#123;max-width:100%&#125;.markdown-body hr&#123;border:none;border-top:1px solid #ddd;margin-top:32px;margin-bottom:32px&#125;.markdown-body code&#123;word-break:break-word;border-radius:2px;overflow-x:auto;background-color:#fff5f5;color:#ff502c;font-size:.87em;padding:.065em .4em&#125;.markdown-body code,.markdown-body pre&#123;font-family:Menlo,Monaco,Consolas,Courier New,monospace&#125;.markdown-body pre&#123;overflow:auto;position:relative;line-height:1.75&#125;.markdown-body pre>code&#123;font-size:12px;padding:15px 12px;margin:0;word-break:normal;display:block;overflow-x:auto;color:#333;background:#f8f8f8&#125;.markdown-body a&#123;text-decoration:none;color:#0269c8;border-bottom:1px solid #d1e9ff&#125;.markdown-body a:active,.markdown-body a:hover&#123;color:#275b8c&#125;.markdown-body table&#123;display:inline-block!important;font-size:12px;width:auto;max-width:100%;overflow:auto;border:1px solid #f6f6f6&#125;.markdown-body thead&#123;background:#f6f6f6;color:#000;text-align:left&#125;.markdown-body tr:nth-child(2n)&#123;background-color:#fcfcfc&#125;.markdown-body td,.markdown-body th&#123;padding:12px 7px;line-height:24px&#125;.markdown-body td&#123;min-width:120px&#125;.markdown-body blockquote&#123;color:#666;padding:1px 23px;margin:22px 0;border-left:4px solid #cbcbcb;background-color:#f8f8f8&#125;.markdown-body blockquote:after&#123;display:block;content:""&#125;.markdown-body blockquote>p&#123;margin:10px 0&#125;.markdown-body ol,.markdown-body ul&#123;padding-left:28px&#125;.markdown-body ol li,.markdown-body ul li&#123;margin-bottom:0;list-style:inherit&#125;.markdown-body ol li .task-list-item,.markdown-body ul li .task-list-item&#123;list-style:none&#125;.markdown-body ol li .task-list-item ol,.markdown-body ol li .task-list-item ul,.markdown-body ul li .task-list-item ol,.markdown-body ul li .task-list-item ul&#123;margin-top:0&#125;.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul&#123;margin-top:3px&#125;.markdown-body ol li&#123;padding-left:6px&#125;.markdown-body .contains-task-list&#123;padding-left:0&#125;.markdown-body .task-list-item&#123;list-style:none&#125;@media (max-width:720px)&#123;.markdown-body h1&#123;font-size:24px&#125;.markdown-body h2&#123;font-size:20px&#125;.markdown-body h3&#123;font-size:18px&#125;&#125;</style><h2 data-id=heading-0>〇、起</h2><p>都 2021 年了，你居然还在用 WebStorm？VSCode 不香吗？😤</p><p>😂 其实都用，平时写 Demo 或格式化文档时用 VSCode，写项目以及阅读源码会用 WebStorm，我认为两者更多是 IDE 和 Editor 的区别，放一起比较必要性也不大；<strong>敲代码用啥只有一个条件就是你可以超级熟练使用那个工具，重点是可提高你独有的敲代码效率，有些像「君子性非异也，善假于物也」这句话表达的观点</strong>。</p><p>那么到底 WebStorm 更香在哪儿，周末花了个下午怼篇文章来开一个 “历史倒车轮“，给大伙介绍一下「如何用上 WebStorm 最新正版？」「如何让 WebStorm 好用不卡？」，以及「WebStorm 香的地方在哪里？」，<strong>以下文章将单词 <code>WebStorm</code> 换成 <code>IntelliJ IDEA</code> 也合适</strong>。</p><h2 data-id=heading-1>一、如何用上 WebStorm 最新正版？</h2><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7889aaab944c1da86c215be13ed6be~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7889aaab944c1da86c215be13ed6be~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer><p><strong>很建议初步使用的时候「用上 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.jetbrains.com%2Fzh-cn%2Fwebstorm%2F" target=_blank rel="nofollow noopener noreferrer" title="https://www.jetbrains.com/zh-cn/webstorm/" ref="nofollow noopener noreferrer">WebStorm 30天</a>内免费」的福利，等到觉得好用再去考虑申请正式版本，防止造成不必要的浪费！</strong></p><h3 data-id=heading-2>1. 自费去官方购买个人版</h3><p>资金允许的同学可以直接上官网买<a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.jetbrains.com%2Fzh-cn%2FWebStorm%2Fbuy%2F%23personal%3Fbilling%3Dyearly" target=_blank rel="nofollow noopener noreferrer" title="https://www.jetbrains.com/zh-cn/WebStorm/buy/#personal?billing=yearly" ref="nofollow noopener noreferrer">个人版本</a>，首年 59 美元，后面年续会便宜不少(59->47->35)，假如不更新的话还可一直用下去不续费。同时<strong>对于个人版<a href="https://link.juejin.cn/?target=https%3A%2F%2Fsales.jetbrains.com%2Fhc%2Fen-gb%2Farticles%2F207241015-Can-I-use-my-personal-license-for-commercial-development-" target=_blank rel="nofollow noopener noreferrer" title=https://sales.jetbrains.com/hc/en-gb/articles/207241015-Can-I-use-my-personal-license-for-commercial-development- ref="nofollow noopener noreferrer">官方说</a>同样支持用于商业项目</strong>，只需要保证一个人用即可。</p><h3 data-id=heading-3>2. 通过开源项目申请一年的使用</h3><p>讲道理，JetBrains 公司真的很良心，提供了开源开发许可证福利，让大伙免费用他家软件进行开源贡献，一般项目维护在 3 个月以上大概率可通过。可从此入口 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.jetbrains.com%2Fzh-cn%2Fcommunity%2Fopensource%2F%23support" target=_blank rel="nofollow noopener noreferrer" title=https://www.jetbrains.com/zh-cn/community/opensource/#support ref="nofollow noopener noreferrer">免费许可证计划</a> 进入申请，也可参考 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F87370573" target=_blank rel="nofollow noopener noreferrer" title=https://zhuanlan.zhihu.com/p/87370573 ref="nofollow noopener noreferrer">这篇教程</a>；除去开源申请外，还可试试<a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.jetbrains.com%2Fzh-cn%2Fcommunity%2Fdev-recognition%2F" target=_blank rel="nofollow noopener noreferrer" title="https://www.jetbrains.com/zh-cn/community/dev-recognition/" ref="nofollow noopener noreferrer">学术许可</a>、<a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.jetbrains.com%2Fzh-cn%2Fcommunity%2Fuser-groups%2F" target=_blank rel="nofollow noopener noreferrer" title="https://www.jetbrains.com/zh-cn/community/user-groups/" ref="nofollow noopener noreferrer">用户组</a>、<a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.jetbrains.com%2Fzh-cn%2Fcommunity%2Fevents-partnership%2F%23developers" target=_blank rel="nofollow noopener noreferrer" title=https://www.jetbrains.com/zh-cn/community/events-partnership/#developers ref="nofollow noopener noreferrer">开发者活动</a>、<a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.jetbrains.com%2Fzh-cn%2Fcommunity%2Fdev-recognition%2F" target=_blank rel="nofollow noopener noreferrer" title="https://www.jetbrains.com/zh-cn/community/dev-recognition/" ref="nofollow noopener noreferrer">开发者认可</a>方式获取，<strong>但都「不能用于商业项目」请斟酌使用</strong>。</p><p><strong>综上，若资金允许就买个人正式版，有些紧就用开源项目的方案。</strong> 同时<del>不建议用淘宝购买自己邮箱授权的教育版或用 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fgitee.com%2Fpengzhile%2Fide-eval-resetter" target=_blank rel="nofollow noopener noreferrer" title=https://gitee.com/pengzhile/ide-eval-resetter ref="nofollow noopener noreferrer">ide-eval-resetter</a> 插件延迟试用期的灰色地带方式</del>来开发商业项目。</p><h2 data-id=heading-4>二、如何让 WebStorm 好用不卡？</h2><div><a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2FQYtuow.mp4" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/QYtuow.mp4 ref="nofollow noopener noreferrer"><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85fe8662eb2a44e9b0195f7a04defd05~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85fe8662eb2a44e9b0195f7a04defd05~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer></a><span><br>打开我 Mac 上最大的一个项目 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Falibaba%2Fx-render" target=_blank rel="nofollow noopener noreferrer" title=https://github.com/alibaba/x-render ref="nofollow noopener noreferrer">xRender</a>，没有插电情况下，实际的启动效果 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2FQYtuow.mp4" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/QYtuow.mp4 ref="nofollow noopener noreferrer">录屏 mp4</a></span></div><h3 data-id=heading-5>1. 安装几个常用的插件</h3><p>直接 <code>command + ，</code> 打开设置，找到 plugin，复制后在插件市场进行搜索安装：</p><ol><li><strong>中文语言包</strong>：讲道理编程的同学应该默认全英文，但是安装后<strong>你会一眼发现很多之前英语下“看不到“的东西</strong>。想起之前自己强迫自己苹果全家桶都用英文，坚持了 1 个月就忍不下去了，虽然看得懂，但是需要脑袋 proxy 翻译的时间，回想起来何必呢？不过看英语如看中文无需反应的同学可忽视（等到哪一天功能熟练以后其实也可以关闭中文）。</li><li><strong>Coderpillr Theme</strong>：超级好看的一个主题，之前试过很多如 One Dark、Material Theme Ul 都不是很满意，其实最爱 Dracula Theme，但遗憾在这里不好看，刚好 Coderpillr 这个小众的很有 Dracula 风格，深得我心。</li><li><strong>Key Promoter X</strong>：快捷键爱好者的神器，会来智能教你记住快捷键。</li><li><strong>.ignore</strong>：自动提示你哪些文件可以被 ignore，省去新项目场景一个一个找的问题</li><li><strong>WakaTime</strong>：需要稍微配置一下，可以将你所有敲代码的地方装上这个插件，可以很访问的统计你敲了多长时间的代码，详细见<a href="https://link.juejin.cn/?target=https%3A%2F%2Fwakatime.com%2F" target=_blank rel="nofollow noopener noreferrer" title="https://wakatime.com/" ref="nofollow noopener noreferrer">官网</a>。</li></ol><p><strong>对于插件，不建议安装太多，满足使用即可，太酷炫的反而影响性能，同时也建议禁用掉一批你用不上的</strong>。</p><h3 data-id=heading-6>2.修改一下文字大小</h3><p>主要有 3 个常用地方要修改下，可也按照个人喜好配置（<a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2FgatYqk.png" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/gatYqk.png ref="nofollow noopener noreferrer">截图说明</a>）：</p><ul><li>一是外观字体，默认有些小了，建议 <code>.ApplesystemUIFont</code> 16；</li><li>二是编辑器字体，推荐 <code>JetBrains Meno</code> 20，行高 1.16，不要连体；</li><li>三是控制台字体，推荐 <code>JetBrains Meno</code> 18，行高 1.14，紧凑一些，不要连体；</li></ul><h3 data-id=heading-7>3. 禁止掉不用的插件</h3><p>继续在 plugin 中已安装 Tab 中，对你觉得你用不上的取消勾选禁止掉一批可能用不上的，减少使用内存，我禁止了很多，其中「Code With Me」不用也可以关闭，可以在「帮助->诊断工具->分析插件内存」来<a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2FqqeGgE.png" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/qqeGgE.png ref="nofollow noopener noreferrer">看到</a>更多可优化的空间，选择性参考如下：</p><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/794738dce65743609547baf01a2291b0~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/794738dce65743609547baf01a2291b0~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer><h3 data-id=heading-8>4. 将默认内存设置大一些</h3><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ded8b3bd8d6c4d1a8d239557bcd1a652~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ded8b3bd8d6c4d1a8d239557bcd1a652~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer><ol><li>当前占用内存，可在底部栏看到，如果没有，可以右键底栏选择打开，也可以关闭一些不用的状态显示。</li><li>在顶部菜单栏找到「帮助->更改内存设置」(2)，M1 很牛逼不动也行，其他的更新到 4096 即可(3)。</li></ol><h3 data-id=heading-9>5. 记住和设置常用的快捷键</h3><p>建议从这里开始，打开本地有 Git 发布记录的前端项目来测试，借此熟练一遍，建议在「设置->键盘映射」中，将「在 Touch Bar上 显示F1、F2等键」勾选上。由于正常软件为了最大化主编辑区，操作动作都在埋在菜单内部了，<strong>导致不能所见所得从而想不到使用，记住快捷键可以让你没有想到情况下比普通用户用到多 50% 的潮流功能</strong>。</p><ol><li><p><strong>常用的一些好用快捷键，建议强迫多用最后到肌肉记住：</strong></p><pre><code class="hljs language-shell copyable" lang=shell><span class=hljs-meta>#</span><span class=bash><span class=hljs-comment># 查找替换操作</span></span>
+shift 按两次             // 随处搜索，搜索文件、功能、代码很方便
+command + f              // 当前页搜索
+command + shift + f      // 全局搜索字段
+command + r              // 替换当前文档
+command + shift + r      // 全局替换字段
+<span class=hljs-meta>
+#</span><span class=bash><span class=hljs-comment># 视图展示</span></span>
+command + 1              // 显示隐藏左侧文件树
+command + 0              // 显示当前待提交代码，用于提交前 diff
+command + 9              // 显示当前历史所有的提交记录
+command + 7              // 显示当前文件的结构，特别是看 Class 时候很方便
+command + 上箭头         // 跳转到导航栏
+<span class=hljs-meta>
+#</span><span class=bash><span class=hljs-comment># 代码操作</span></span>
+command + option + l     // 格式化代码(常用)
+shift + f6               // 使文件、标签、变量名重命名
+f2, shift + f2           // 切换到上\下一个突出错误的位置
+shift + 回车             // 无论在什么位置，自动跳到下一行
+option + 回车            // 警告代码快速给出自动修正
+command + 点击           // 跳到代码调用位置
+command + delete         // 删除当前行，command + x也可以
+command + d              // 复制新增一行一样的代码
+command + w              // 关闭当前文件选项卡
+command + /              // 注释行代码
+command + b              // 跳转到变量声明处
+command + shift + c      // 复制文件的路径
+command + shift + [ ]    // 选项卡快速切换，很有用
+command + shift + u      // 大小写自动转
+command + shift + /      // 注释块代码
+command + shift + +/-    // 展开/折叠 当前选中的代码块
+command + shift + v      // 从剪切板里选择黏贴
+<span class=hljs-meta>
+#</span><span class=bash><span class=hljs-comment># git 操作</span></span>
+command + k              // 填写代码提交记录
+command + option + k     // 提交代码
+command + option + z     // 撤销当前代码改动
+command + d              // 选中两个文件进行对比，充当文件夹 diff 工具
+<span class=copy-code-btn>复制代码</span></code></pre></li><li><p><strong>找到「设置里的键盘映射」，进行操作文字「搜索」，设置几个有用的自定义快捷键，我习惯用左边竖直对齐的 <code>control+shift</code>，也可以设置自己顺手的:</strong></p><ul><li><code>打开最近</code>：设置成 <code>control+shift+r</code> 或者更顺手的 <code>command+e</code>，recent 可以将历史开发过的项目快速打开</li><li><code>打开..</code>：设置成 <code>control+shift+o</code> ，open 用于打开新项目，后面更多使用 <code>command+e</code> 快速启动</li><li><code>关闭项目</code>：设置成 <code>control+shift+w</code> ，用于关闭当前项目的 WebStrom 窗口</li><li><code>终端</code>：设置成 <code>control+shift+i</code>，iterm <strong>用于打开命令行窗口，这个命令用得很多</strong></li><li><code>注解</code>：设置成 <code>control+shift+b</code>，blame 可以显示当前文件代码每行的开发记录</li><li><code>显示历史提交记录</code>：设置成 <code>control+shift+h</code>，history 可以显示当前文件所有的提交改动记录</li><li><code>拉代码</code>：设置成 <code>control+shift+p</code>，pull 当前分支最新的的 git 代码</li><li><code>与分支比较</code>：设置成 <code>control+shift+d</code>，diff 可以将当前文件/文件夹（选择左侧的文件树）和历史分支对比，排查线上问题简直神器</li><li><code>切换演示模式</code>: 设置成<code>command+option+control+v</code>，view 特别合适在代码演示和分享给他人看的时候的场景</li><li><code>切换免打扰模式</code>: 设置成<code>command+option+control+m</code>，mute 特别合适想安静敲代码的时候</li></ul></li><li><p><strong>刚开始不习惯使用快捷键的同学，可以在顶部菜单栏、在编辑器上、底部状态栏上、左侧导航文件树上多用用<code>右键</code>，可以发现很多新玩意，通过 Key Promoter X 来辅助记忆</strong></p></li></ol><h3 data-id=heading-10>6. 可能用不上的高级设置</h3><p>假如设置平时不卡，但是在 Webstorm 自带终端 <code>npm i</code> 以后，特别是依赖 node_modules 文件索引超多变化导致无响应的问题（好电脑一般不会），可以试试我这边调试了好多次的高级设置。</p><p>在顶部菜单找到「帮助->编辑自定义属性」，打开 <code>idea.properties</code> 文件，编辑如下：</p><pre><code class="hljs language-txt copyable" lang=txt>idea.cycle.buffer.size=4096
+idea.max.intellisense.filesize=50
+<span class=copy-code-btn>复制代码</span></code></pre><p>继续在「帮助->编辑自定义VM选项」打开 <code>webstorm.vmoptions</code> 文件，编辑如下：</p><pre><code class="hljs language-txt copyable" lang=txt>-ea
+-server
+-Xms2048m
+-Xmx8192m
+-Xss16m
+-XX:MaxMetaspaceSize=2G
+-XX:MetaspaceSize=1G
+-XX:ConcGCThreads=8
+-XX:ParallelGCThreads=8
+-XX:NewRatio=2
+-XX:ReservedCodeCacheSize=240m
+-XX:+AlwaysPreTouch
+-XX:+UseG1GC
+-XX:+DoEscapeAnalysis
+-XX:+TieredCompilationUseG1GC
+-XX:SoftRefLRUPolicyMSPerMB=50
+-XX:+UnlockExperimentalVMOptions
+-Dsun.io.useCanonPrefixCache=false
+-Djava.net.preferIPv4Stack=true
+-Dsun.io.useCanonCaches=false
+-XX:LargePageSizeInBytes=256m
+-XX:+UseCodeCacheFlushing
+-XX:+DisableExplicitGC
+-XX:+ExplicitGCInvokesConcurrent
+-XX:+AggressiveOpts
+-XX:+CMSClassUnloadingEnabled
+-XX:CMSInitiatingOccupancyFraction=60
+-XX:+CMSParallelRemarkEnabled
+-XX:+UseAdaptiveGCBoundary
+-XX:+UseSplitVerifier
+-XX:CompileThreshold=10000
+-XX:+OptimizeStringConcat
+-XX:+UseStringCache
+-XX:+UseFastAccessorMethods
+-XX:+UnlockDiagnosticVMOptions
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-Djdk.attach.allowAttachSelf=true
+-Dkotlinx.coroutines.debug=off
+-Djdk.module.illegalAccess.silent=true
+-XX:+UseCompressedOops
+-Dfile.encoding=UTF-8
+-XX:CICompilerCount=2
+-Xverify:none
+<span class=copy-code-btn>复制代码</span></code></pre><p>最后在顶部菜单栏找到「文件->清楚缓存..」，然后重启 WebStrom 后，再试试 <code>npm i</code> 安装巨多依赖应该也不会卡了。</p><hr><p>当你上面都熟练了，很建议在右下角 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2FyXusL6.png" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/yXusL6.png ref="nofollow noopener noreferrer">状态栏</a> 中登录账号进行同步，防止设置丢失，等你用过一段时间后，你就会发现 WebStorm 慢慢的就香起来了。</p><h2 data-id=heading-11>三、WebStorm 香的地方在哪里？</h2><h3 data-id=heading-12>1. 世界上最好用 Git 管理工具</h3><ol><li><p><strong>看这一行代码是谁写的</strong>：也叫 git blame，快捷键 <code>control+shift+b</code>，或者在代码行数数字式右键「使用 Git Blame 注解」，就可以出现了这样 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2FKo1zcO.png" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/Ko1zcO.png ref="nofollow noopener noreferrer">效果</a>，同时可鼠标点击下对应的名称，会出现当时那次提交的 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2F60h8XE.png" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/60h8XE.png ref="nofollow noopener noreferrer">详细记录</a>。</p></li><li><p><strong>提交前 CR 代码改动</strong>：很建议保持这个习惯，每次提交前都对比一下改动了下，快捷键为<code>command + 0</code>，这个 diff 对比超级清晰，同时很容易发现粗心的代码，这样的 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2Fvgy10n.png" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/vgy10n.png ref="nofollow noopener noreferrer">效果</a>，确定无误后 <code>command+k</code> 填写提交记录，<code>command+shift+k</code> 提交代码，提交完成后 <code>command+1</code> 切回到代码开发。</p></li><li><p><strong>查看当前的所有提交记录</strong>： 快捷键 <code>control+shift+h</code> 可以查看所有的历史提交记录，假如你只想看某个文件或者某个文件夹，选中，然后快捷键即可，或者右键找到 git 里面的「显示历史记录」。</p></li><li><p><strong>查看当前分支和主干的改动点</strong>：这个是我觉得最好用的地方，也叫「<strong>救命操作</strong>」，比如说线上出现了问题，想对比上线版本和上一个版本的全部代码改动点就用得上他了，或者你需要合并 master 之前用于最后的 CR 也是很合适的，快捷键为 <code>control+shift+d</code>，或者在对应的总文件夹上面点击右键找到 git 里面的「与分支比较」,就可看到如下效果，同时可以按下 F7 来看下一个改动点。</p><div><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/03ef53d0af5543b794f3fcb7528b8a7b~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/03ef53d0af5543b794f3fcb7528b8a7b~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer><span><br>有试过知名的 Tower、Sourcetree、Sublime Merge、Fork 等 Git 管理工具，发现真心不如它</span></div></li></ol><h3 data-id=heading-13>2. 很安稳的重构&优化代码的神器</h3><ol><li><p><strong>文件、变量重命名会帮忙将所有的调用也修改掉</strong>：快捷键为 <code>shift+f6</code>，也可以直接在文件或者变量上右键找到重构，改后所有地方都会帮你自动改动。</p></li><li><p><strong>文件修改位置后，也会自动修改调用处的引用</strong>。</p></li><li><p><strong>文件删除前，会检测调用是否清理干掉</strong>：可以在一个文件上 <code>command+delete</code> 试试，会提示你哪儿还在使用。</p></li><li><p><strong>拼写错误、语法错误、代码写得不优雅都会有提示</strong>：可以 <code>option+回车</code> 来按照建议修复，有时候拼写错误可能是自有单词，可将此单词存到 WebStorm 字典里面。</p></li><li><p><strong>可以将某一块代码提炼成一个方法使用</strong>：找到一块可以提炼成方法的代码，选中，然后 <code>command+option+m</code> 即可抽象方法并智能帮你方法命名。</p></li><li><p><strong>可替换成使用 Prettier 作为默认格式化</strong>：这个功能可以更好的和其他同事 VSCode 开发场景中代码格式保持一致，可见 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fqpluspicture.oss-cn-beijing.aliyuncs.com%2Fup%2F06rBw9.png" target=_blank rel="nofollow noopener noreferrer" title=https://qpluspicture.oss-cn-beijing.aliyuncs.com/up/06rBw9.png ref="nofollow noopener noreferrer">设置演示</a>。</p></li><li><p><strong>告诉你哪些代码可以优化</strong>：特别是重复代码的提示查找工具很是不错，此处偷偷 @NASA FR 有可优化代码。</p><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e6c59e6e6b884beb80d4ee63fb503af5~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e6c59e6e6b884beb80d4ee63fb503af5~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer></li></ol><h3 data-id=heading-14>3. 智能提示真的很强</h3><ol><li><p><strong>显示当前包信息</strong>：可以将鼠标放到对应的引入包上面一会儿，会显示这个包的 README，省去去看如何使用：</p><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b3a505b0ab864fad8261ec11ffdf69f7~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b3a505b0ab864fad8261ec11ffdf69f7~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer></li><li><p><strong>机器学习来提示代码</strong>：写代码过程中，当前 <strong>WebStorm 2021 支持机器学习所有人的代码习惯来优化代码提示功能</strong>，支持简洁的代码提示（VSCode 有时候会有很多用不上的提示），用了一段时间后你就慢慢发现了。</p><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/94c7496829cb4685af04595f2bca2671~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/94c7496829cb4685af04595f2bca2671~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer></li></ol><h3 data-id=heading-15>4. 潮流功能 Code With Me 实时调试他人的代码</h3><ol><li><p>回想起之前给同学排查代码问题，特别是不坐到一起的场景，你需要先让他加代码权限，然后 clone 代码，切分支，npm i，然后告诉你代码哪儿可能有问题，这里就浪费了很多时间了。</p></li><li><p>有时候可能会用 Mac 远程控制，但是有这里体验很不好，很多时候都是卡顿掉帧反应慢，寸步难行的感觉，更不要说去调试代码了。</p></li><li><p>有了这个 Code With Me 后（没有开启需要去插件中去开启），直接对方分享一个 url 给你，会自动将对方代码包括安装好的依赖同步到你的 WebStorm，然后你在你本地修改时候，对方电脑也会修改，更潮流的你两还可以视频会议的方式来聊哪儿问题，使用几乎原生秒开的体验，可通过 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLq0fCMCK-Yw" target=_blank rel="nofollow noopener noreferrer" title="https://www.youtube.com/watch?v=Lq0fCMCK-Yw" ref="nofollow noopener noreferrer">官方视频</a> 了解更多。</p><div><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d73bddd2710f4bfab39f0d90723b876a~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d73bddd2710f4bfab39f0d90723b876a~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="800/" loading=lazy referrerpolicy=no-referrer><p>左边为本地 WebStorm，右侧为协助者的 Code With Me，类比两台电脑协同的效果</p></div></li></ol><h3 data-id=heading-16>5. 还有不少小惊喜的功能</h3><ol><li><p><strong>给你一个清晰的 node_modules</strong>：可能很多用 VSCode 的同学都很困惑，我的 node_modules 根本找不到东西，但是 WebStorm 就很清晰了：</p><div><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2d294305afea47baa657d230773d80a7~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2d294305afea47baa657d230773d80a7~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="600/" loading=lazy referrerpolicy=no-referrer><span><br>左边为 WebStorm，右侧为 VSCode（不过可通过 Node Modules Context Menu 这个小众插件解决）</span></div></li><li><p><strong>独特的演示模式和专注模式</strong>，可以在通过自定义快捷键 <code>command+option+control+v</code> 打开，或者在「视图->外观->进入演示模式」找到（可去设置->外观->最下面将演示模式字体设置到 28），省去演示代码时下面看不清的尴尬；使用自定义快捷键 <code>command+option+control+v</code> 进入免打扰模式，也可以「视图->外观->进入专注模式」认真敲代码，也是很清晰的。</p><div><img src=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b122d11e1b04f378f423723e81f31b3~tplv-k3u1fbpfcp-zoom-1.image class=lazyload data-srcset=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b122d11e1b04f378f423723e81f31b3~tplv-k3u1fbpfcp-zoom-1.image srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" width="600/" loading=lazy referrerpolicy=no-referrer><br><span>第一次是演示模式，第二次是免打扰模式</span></div></li></ol><hr><p><strong>回到开始所说，提高操作效率不在乎你用哪一个工具，而在乎你熟练哪个工具，同时很建议大伙对于自己常用的软件，慢慢让自己习惯使用快捷键，并逐步脱离鼠标，会有有趣事情发生的</strong>。</p></div></div><div class=footer><div class=copyright><blockquote><p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p><p>本文永久链接是：<a href=https://news.slqwq.cn/p/a4c0.html>https://news.slqwq.cn/p/a4c0.html</a></p></blockquote></div></div><div class=article-meta id=bottom><div class=new-meta-box><div class="new-meta-item date" itemprop=dateUpdated datetime=2021-07-11T00:44:23+00:00><a class=notlink><i class="fas fa-edit fa-fw" aria-hidden=true></i><p>更新于：2021年7月11日</p></a></div><div class="new-meta-item share -mob-share-list"><div class="-mob-share-list share-body"><a class=-mob-share-qq rel="external nofollow noopener noreferrer noopener" target=_blank href="http://connect.qq.com/widget/shareqq/index.html?url=https://news.slqwq.cn/p/a4c0.html&title=都 2021 了你居然还在用 WebStorm ？ - Hajeekn RSSHUB&pics=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7889aaab944c1da86c215be13ed6be~tplv-k3u1fbpfcp-zoom-1.image&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-qzone rel="external nofollow noopener noreferrer noopener" target=_blank href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://news.slqwq.cn/p/a4c0.html&title=都 2021 了你居然还在用 WebStorm ？ - Hajeekn RSSHUB&pics=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7889aaab944c1da86c215be13ed6be~tplv-k3u1fbpfcp-zoom-1.image&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-weibo rel="external nofollow noopener noreferrer noopener" target=_blank href="http://service.weibo.com/share/share.php?url=https://news.slqwq.cn/p/a4c0.html&title=都 2021 了你居然还在用 WebStorm ？ - Hajeekn RSSHUB&pics=https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7889aaab944c1da86c215be13ed6be~tplv-k3u1fbpfcp-zoom-1.image&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a></div></div></div></div><div class=prev-next><a class=prev href=/p/9853.html><p class=title><i class="fas fa-chevron-left" aria-hidden=true></i>潮流前端周刊（第30期）- 不天黑的乌鲁木齐</p><p class=content>.markdown-body&#123;word-break:break-word;line-height:1.75;font-weight:400;font-size:15px;ove...</p></a><a class=next href=/p/7623.html><p class=title>2021 阿里巴巴设计大会新升级！继续助力中国设计产业<i class="fas fa-chevron-right" aria-hidden=true></i></p><p class=content>5月14日-18日，2021阿里巴巴设计周在杭州国际博览中心举行。 今年是阿里巴巴设计举办论坛的10周年，带着对过去的思考，以及对行业未来10年的助力和发展，UCAN设计大会正式升级为“...</p></a></div></article></div><aside class=l_side><section class="widget toc-wrapper shadow desktop mobile" id=toc-div><header><i class="fas fa-list fa-fw" aria-hidden=true></i> <span class=name>本文目录</span></header><div class=content><ol class=toc><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>〇、起</span></a></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>一、如何用上 WebStorm 最新正版？</span></a><ol class=toc-child><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>1. 自费去官方购买个人版</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>2. 通过开源项目申请一年的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>二、如何让 WebStorm 好用不卡？</span></a><ol class=toc-child><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>1. 安装几个常用的插件</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>2.修改一下文字大小</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>3. 禁止掉不用的插件</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>4. 将默认内存设置大一些</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>5. 记住和设置常用的快捷键</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>6. 可能用不上的高级设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class=toc-link><span class=toc-text>三、WebStorm 香的地方在哪里？</span></a><ol class=toc-child><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>1. 世界上最好用 Git 管理工具</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>2. 很安稳的重构&amp;优化代码的神器</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>3. 智能提示真的很强</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>4. 潮流功能 Code With Me 实时调试他人的代码</span></a></li><li class="toc-item toc-level-3"><a class=toc-link><span class=toc-text>5. 还有不少小惊喜的功能</span></a></li></ol></li></ol></div></section></aside><script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="都 2021 了你居然还在用 WebStorm ？";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script></div><footer class="footer clearfix"><br><br><div class=aplayer-container></div><br><div class=social-wrapper></div><div><p>博客内容遵循 <a target=_blank rel=noopener href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p></div><div><p><span id=lc-sv>本站总访问量为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次</span> <span id=lc-uv>访客数为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 人</span></p></div>本站使用 <a href=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1 target=_blank class=codename>Volantis</a> 作为主题<div class=copyright><p><a href="/">Copyright © 2017-2020 XXX</a></p></div></footer><a id=s-top class="fas fa-arrow-up fa-fw" href=javascript:void(0)></a></div></div><div><script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script><script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script><script src=https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js></script><script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script><script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script><script defer src=https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js></script><script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script><script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script><script defer src=https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js></script><script src=/js/valine.js></script><script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script><script src=/js/app.js></script><script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script><script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://news.slqwq.cn' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script><script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script><script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script><script src=https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js></script><script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script></div></body></html>

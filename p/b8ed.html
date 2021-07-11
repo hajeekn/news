@@ -1,0 +1,773 @@
+<!DOCTYPE html><html lang=zh-CN><head hexo-theme=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=on><link rel=dns-prefetch href=https://cdn.jsdelivr.net><link rel=preconnect href=https://cdn.jsdelivr.net crossorigin><meta name=renderer content=webkit><meta name=force-rendering content=webkit><meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1"><meta name=HandheldFriendly content=True><meta name=apple-mobile-web-app-capable content=yes><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1"><link rel=preload href=/css/first.css as=style><title>一文读懂游戏引擎：核心问题、适用场景与下一个十年 - Hajeekn RSSHUB</title><link rel=alternate href=/atom.xml title="Hajeekn RSSHUB" type=application/atom+xml><meta name=referrer content=no-referrer><link rel=stylesheet href=/css/diy.css><link rel=stylesheet href=/css/first.css><link rel=stylesheet href=/css/style.css media=print onload="this.media='all';this.onload=null"><noscript><link rel=stylesheet href=/css/style.css></noscript><script id=loadcss></script><script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script><noscript><style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style><div class=kill-noscript><h1><b>抱歉，您的浏览器无法访问本站</b></h1><h3>本页面需要浏览器支持（启用）JavaScript</h3><br><a target=_blank rel=noopener href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a></div></noscript></head><body><header id=l_header class="l_header always shadow blur show"><div class=container><div id=wrapper><div class=nav-sub><p class=title></p><ul class="switcher nav-list-h m-phone" id=pjax-header-nav-list><li><a id=s-comment class="fas fa-comments fa-fw" target=_self href=javascript:void(0)></a></li><li><a id=s-toc class="s-toc fas fa-list fa-fw" target=_self href=javascript:void(0)></a></li></ul></div><div class=nav-main><a class="title flat-box" target=_self href="/"><img no-lazy class=logo src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png></a><div class="menu navigation"><ul class="nav-list-h m-pc"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></div><div class=m_search><form name=searchform class="form u-search-form"><i class="icon fas fa-search fa-fw"></i> <input type=text class="input u-search-input" placeholder=Search...></form></div><ul class="switcher nav-list-h m-phone"><li><a class="s-search fas fa-search fa-fw" target=_self href=javascript:void(0)></a></li><li><a class="s-menu fas fa-bars fa-fw" target=_self href=javascript:void(0)></a><ul class="menu-phone list-v navigation white-box"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id=home><i class="fas fa-home fa-fw fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%8D%9A%E5%AE%A2/" id=categoriesE58D9AE5AEA2><i class="fas fa-rss fa-fw"></i> 博客订阅</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%96%B0%E5%AA%92%E4%BD%93/" id=categoriesE696B0E5AA92E4BD93><i class="fas fa-podcast fa-fw fa-fw"></i> 新媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" id=categoriesE4BA8CE6ACA1E58583><i class="fas fa-heart fa-fw fa-fw"></i> 二次元</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E6%B8%B8%E6%88%8F/" id=categoriesE6B8B8E6888F><i class="fa fa-gamepad fa-fw fa-fw"></i> 游戏</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%9B%BE%E7%89%87/" id=categoriesE59BBEE78987><i class="fas fa-puzzle-piece fa-fw fa-fw"></i> 图片</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E8%AE%BE%E8%AE%A1/" id=categoriesE8AEBEE8AEA1><i class="fas fa-magic fa-fw fa-fw"></i> 设计</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%BC%96%E7%A8%8B/" id=categoriesE7BC96E7A88B><i class="fas fa-code fa-fw fa-fw"></i> 编程</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%87%91%E8%9E%8D/" id=categoriesE98791E89E8D><i class="fas fa-key fa-fw fa-fw"></i> 金融</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" id=categoriesE7A4BEE4BAA4E5AA92E4BD93><i class="fas fa-users fa-fw fa-fw"></i> 社交媒体</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E9%98%85%E8%AF%BB/" id=categoriesE99885E8AFBB><i class="fas fa-book fa-fw fa-fw"></i> 阅读</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/%E5%AD%A6%E4%B9%A0/" id=categoriesE5ADA6E4B9A0><i class="fas fa-graduation-cap fa-fw fa-fw"></i> 学习</a></li></ul></li></ul></div></div></div></header><div id=l_body><div id=l_cover><div id=full class="cover-wrapper post dock" style="display: none;"><div class="cover-bg lazyload placeholder" data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div><div class=cover-body><div class=top><p class=title>Volantis</p></div><div class=bottom><div class="menu navigation"><div class=list-h><a href="/v4/getting-started/" id=v4getting-started><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg><p>文档</p></a> <a href="/faqs/" id=faqs><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg><p>帮助</p></a> <a href="/examples/" id=examples><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg><p>示例</p></a> <a href="/contributors/" id=contributors><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg><p>社区</p></a> <a href="/archives/" id=archives><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg><p>博客</p></a> <a target=_blank rel=noopener href="https://github.com/volantis-x/hexo-theme-volantis/" id=https:githubcomvolantis-xhexo-theme-volantis><img src=https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg><p>源码</p></a></div></div></div></div><div id=scroll-down style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div></div></div><div id=safearea><div class=body-wrapper id=pjax-container><div class=l_main><article class="article post white-box reveal md shadow article-type-post" id=post itemscope itemprop=blogPost><div class=headimg-div><a class=headimg-a><img class=headimg src=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg></a></div><div class=article-meta id=top><a title=一文读懂游戏引擎：核心问题、适用场景与下一个十年 href=/p/b8ed.html><img class=thumbnail src=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg></a><h1 class=title>一文读懂游戏引擎：核心问题、适用场景与下一个十年</h1><div class=new-meta-box><div class="new-meta-item author"><a class=author target=_blank href="https://docs.rsshub.app/" rel="nofollow noopener"><img no-lazy src=https://i.loli.net/2019/04/23/5cbeb7e41414c.png><p>RSSHub</p></a></div><div class="new-meta-item category"><a class=notlink><i class="fas fa-folder-open fa-fw" aria-hidden=true></i> <a class=category-link href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a><span class=sep></span><a class=category-link href="/categories/%E6%B8%B8%E6%88%8F/GameRes-%E6%B8%B8%E8%B5%84%E7%BD%91/">GameRes 游资网</a><span class=sep></span><a class=category-link href="/categories/%E6%B8%B8%E6%88%8F/GameRes-%E6%B8%B8%E8%B5%84%E7%BD%91/%E5%88%97%E8%A1%A8/">列表</a></a></div><div class="new-meta-item date"><a class=notlink><i class="fas fa-calendar-alt fa-fw" aria-hidden=true></i><p>发布于：2021年6月8日</p></a></div><div class="new-meta-item browse leancloud"><a class=notlink><div id=lc-pv data-title=一文读懂游戏引擎：核心问题、适用场景与下一个十年 data-path=/p/b8ed.html><i class="fas fa-eye fa-fw" aria-hidden=true></i><span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次浏览</div></a></div></div></div><div><table cellspacing=0 cellpadding=0><tbody><tr><td class=t_f id=postmessage_2499792><div align=center><img id=aimg_983531 aid=983531 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg referrerpolicy=no-referrer></div><br><strong><font color=#de5650>前言：游戏是科技应用和创新的前沿</font></strong><br><br>1975年，美国国防部向MIT赠送了若干台单价40万美元的中型计算机PDP-10，本应用于模拟武器研发的设备中，更受学生欢迎的却是一款叫做冒险（adventure）的电子游戏；2021年，英伟达顶级图形显卡仍然一卡难求，这些原本为游戏玩家和设计师准备的硬件因超高浮点运算能力等多项性能优势，被广泛用于人工智能和区块链计算；5月26日，虚幻引擎5体验版发布，Nanite 虚拟几何体、Lumen 实时全局光照和 MetaSounds 等功能，为次世代游戏、实时可视化和沉浸式互动体验在真实感和细节上实现了跨世代的提升。<br><br>如果深潜至内容和社交层面的游戏理解之下，就会看到其更为“硬核”的一面——游戏不仅是创作和表达的媒介、社会交往的空间，更是科技应用和创新的前沿。游戏研发技术中的通用技术及工具正在赋能影视、仿真、工业等多个领域，AI云计算等新技术将游戏作为深度应用场景，新硬件与新交互带来算力和体验多重突破。未来游戏将会朝着哪些科技领域突破发展，又将如何助力“超级数字场景”加速虚实融合、创造更多价值？系列文章将从关键技术和发展路径角度，围绕以下几个侧面尝试进行解读。<br><br><ul><li>游戏引擎</li><li>虚拟人</li><li>云游戏</li><li>混合现实设备</li><li>AI辅助内容生成</li><li>……<br></li></ul><br><strong><font color=#de5650>超级数字场景：将脱水的互联网空间再浸泡</font></strong><br><br>科幻作品呈现的未来想象中，赛博空间会越来越场景化，成为集生活、交易、娱乐为一体的“超级数字场景”。比如《黑客帝国》中Matrix世界与现实世界无异，《头号玩家》VR头显背后是多个超现实场景构成的异想世界。<br><br>但在当下，当我们点击一个视频链接时，期待的仍是内容本身，而非想象自己正漫步进一家虚拟的电影院；弹幕增强了临场感，但仍然很难再现生活中的观影体验。从有形的现实场景到互联网场景，超文本改变了传统的时空关系，我们在链接间的“传送门”跳跃。场景在互联网中成为一个抽象理念，往往不再意味着具体的设施、环境和体验。<br><br><div align=center><img id=aimg_983532 aid=983532 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101212t5kn8qziihu8n88x.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101212t5kn8qziihu8n88x.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101212t5kn8qziihu8n88x.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101212t5kn8qziihu8n88x.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>嗯，这就是我们给互联网的画像……</font></font></div><br>咖啡馆、画廊、美术馆、健身房等，并非单纯的物理设施，而是承载着公共活动和文化意涵，从而改变人们的态度与行为，影响社会生活，并重新定义了城市场景（Urban Scenes）。这也是社会学著作《场景：空间品质如何塑造社会生活》中的主要观点之一。<br><br>超级数字场景以超大规模、实时可交互的虚拟世界，将被折叠的互联网在3D空间中展开，在视觉、听觉多层面传达可信、沉浸的丰富信息。这里不仅再现日常生活、更实现幻想世界，并提供更多选择。比如任意两个地点之间可以瞬时传送，演唱会在你“坐下”的一刻才会开启，不断改变自己的外观（甚至性别）也并非难事。尽管全功能脑机接口、全感知沉浸技术离我们尚有时日，但《荒野大镖客2》《赛博朋克2077》等游戏则切实展示了通向未来的雏形。<br><div align=center><font size=2><font color=#808080><img id=aimg_983533 aid=983533 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101213g2yjvdjiyhkhd9jk.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101213g2yjvdjiyhkhd9jk.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101213g2yjvdjiyhkhd9jk.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101213g2yjvdjiyhkhd9jk.jpg referrerpolicy=no-referrer></font></font></div><div align=center><font size=2><font color=#808080>可以嗅到风的气息</font></font></div><br><strong><font color=#de5650>游戏引擎是超级数字场景的“梦工厂”</font></strong><br><br>构建“超级数字场景”的本质是对现实世界的抽象、提炼和再现，需要多种能力：对现实的测量及在数字世界中的重绘，构造外观和动作逼真的“人”的数字化身，统筹声音画面动作等资源，及构建新世界的运行规则。同时，这种能力也须以开放、工具化、易使用的形式提供给各种层级的创作者。当下，最贴近这一能力的是游戏引擎（game engine）及相关开发工具。<br><br><div align=center><img id=aimg_983534 aid=983534 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101214yqv5nd7iavbkqia3.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101214yqv5nd7iavbkqia3.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101214yqv5nd7iavbkqia3.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101214yqv5nd7iavbkqia3.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>实现超级数字场景所需的部分技术</font></font></div><br>游戏引擎是为了提升游戏开发效率的一系列工作套件，管理游戏的画面表现和交互逻辑。世界知名的游戏引擎包括EPIC公司的unreal系列，unity系列，CryEngine及部分游戏公司自研引擎，如EA的寒霜，育碧的Anvil，CDPR的REDENGINE，网易的NeoX、Messiah，腾讯的Quicksilver等。<br><br>从工作流程看，游戏引擎属于中间件。美术资源的建造需要预先在其它软件中完成，如3DMax、Maya、ZBRUSH制作模型，PS绘制贴图，Houdini制作场景，动作捕捉获取动作信息等，导入引擎进行整合。音乐音效素材同样由引擎外的其它工具制作。随着游戏引擎应用领域的增加，与工业软件、仿真应用、影视制作工具的衔接越发紧密。<br><br>“创世”并非易事，游戏引擎尽可能去模拟世界的内外形态，设定基础物理规则，定义交互方式。游戏引擎更像一个设备齐全、工艺先进的巨型影棚，在演员、布景、灯光、摄像机、导轨依次摆好后，如何让画面、运动、交互协调运转，就是创作者和引擎的工作了。真实世界的信息量趋近无限，需要做出抽象和简化。游戏引擎及相关工具在实时运算、效率优先、追求品质的思路下，解决的三个核心问题是：渲染、物理、动作。<br><br><strong><font color=#de5650>渲染：绘制超逼真的计算机图像</font></strong><br><br>当你在阅读这行文字时，计算机及一整套协议、软件正共同施展一个叫做“渲染”（render）的魔法，使得代码和数据变成显示屏上可以阅读的图像。在影视、游戏中，同样由计算机将原始数据信息绘制为一帧帧图像，渲染规模更大、任务更多，最终效果也更为复杂和绚丽。其主要工作一是将3D模型转化为摄像机前的平面图像，二是尽量准确地还原每个像素应有的颜色。<br><br><div align=center><img id=aimg_983535 aid=983535 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101215zo0o2zazud70kt2d.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101215zo0o2zazud70kt2d.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101215zo0o2zazud70kt2d.jpg width=474 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101215zo0o2zazud70kt2d.jpg referrerpolicy=no-referrer></div><br>赛博朋克世界烟雨迷蒙，霓虹映照出角色眼中“五彩斑斓的黑”，这背后是计算机图形学和工程学人数十年孜孜不倦的努力。1974年成立时，ACM SIGGRAPH（美国计算机学会计算机图形学特别兴趣组）只是由少数学科专家组成的团体，如今已发展为由国际研究人员、艺术家、开发者、电影人和产业人共同组成的国际社区，每年召开SIGGRAPH及SIGGRAPH ASIA顶级学术会议，发布前瞻性的图形和交互技术革新。<br><br>渲染可能意味着巨大的计算量，效果和效率难以兼顾。当前，渲染被分化为影视常用的离线（off-line）渲染，和游戏使用的实时（real time）渲染。<br><br>影视为了实现纤毫毕现的拟真效果，可以静静等待渲染画面生成，动用的超大计算集群被形象地称为“农场”。维塔数码制作的《战斗天使阿丽塔》，主角每根发丝都是一个需要单独渲染的“物体”，共超过13万根。单帧画面渲染需要100小时，3万台电脑不分昼夜工作，排放出的热气使惠灵顿气温上升。<br><br>游戏则要对玩家的输入实时反应，射击类游戏中，高手决胜往往就在几帧画面之间；同时，玩家硬件的计算能力捉襟见肘。因此，效率被摆在首位，视觉上的减法、优化甚至欺骗都很必要。比如将被遮挡的物体剔除掉不做计算；将更精致、面数更高的模型渲染好，提取光影纹理贴图放在低面数模型上的漫反射、高光、法线贴图技术。计算机图形学和算法、工程的加持，与作为工具的游戏引擎一同加入这场“极限挑战”。<br><br><div align=center><img id=aimg_983536 aid=983536 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101215te99j9m25p2288hs.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101215te99j9m25p2288hs.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101215te99j9m25p2288hs.jpg width=450 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101215te99j9m25p2288hs.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>左：400万面的高精度模型</font></font></div><div align=center><font size=2><font color=#808080>中：500面的简化低面数模型</font></font></div><div align=center><font size=2><font color=#808080>右：法线贴图效果-把光影信息叠加在低面数模型上</font></font></div><br>实时渲染效果的提升，依赖算法和算力的共同推进。在3D场景中，如何准确呈现一个多边形中每一个像素当下的色彩？这要考虑它的形体、颜色、光线和材质。开启全局光照（global illumination，简称GI）后，画面中原本没有直接光照而漆黑一片的地方，也因漫反射带来的间接照明变亮，细节和真实度大幅提升。<br><br><div align=center><img id=aimg_983537 aid=983537 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101216peaaswaee1yp4p7t.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101216peaaswaee1yp4p7t.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101216peaaswaee1yp4p7t.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101216peaaswaee1yp4p7t.jpg referrerpolicy=no-referrer></div><br><div align=center><img id=aimg_983538 aid=983538 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101217anvwyem9xnegnt44.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101217anvwyem9xnegnt44.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101217anvwyem9xnegnt44.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101217anvwyem9xnegnt44.jpg referrerpolicy=no-referrer></div><br>GPU专业图形硬件发展为渲染特别是光影表现带来极大提升。比如20世纪70年代末提出的光线追踪（raytracing，简称光追）算法框架，需要计算视点发出的每一根光线在物体表面反射、折射的情况，来相对准确地还原投影、镜面、折射的光学效果。但因为计算量巨大，直到2018年英伟达发布RTX GPU、微软推出DXR API，硬件层面的实时光线追踪才成为可能。顶级消费显卡2080ti开启光线追踪后，游戏画面也会迅速下降到30帧甚至更低。<br><br><div align=center><img id=aimg_983539 aid=983539 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101217zf2s6s1fz8m1a4ll.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101217zf2s6s1fz8m1a4ll.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101217zf2s6s1fz8m1a4ll.jpg width=570 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101217zf2s6s1fz8m1a4ll.jpg referrerpolicy=no-referrer></div><br><strong><font color=#de5650>物理：锚定新世界的运行规律</font></strong><br><br>数字3D模型至少有两种构成逻辑：以顶点和多边形（Polygon）绘制空心的外表面，及用乐高积木一样的体素（Voxel）由内而外搭建实体。后者更逼近物理世界的构成逻辑，2009年《我的世界（Minecraft）》取得空前成功，非常类似一个高度封装的体素物理引擎，其建造、组装、破坏等方式丰富了玩家和数字世界的交互。但巨量的粒子数对实时运算要求过高，材质和细节表现不佳，因此主流游戏制作仍采用多边形模式。UE5的Nanite技术，使得画面中可以同时存在数亿个三角形，达到影视级逼真效果。<br><br><div align=center><font size=2><font color=#808080><img id=aimg_983540 aid=983540 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101218gbbhjwm5o550q5m5.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101218gbbhjwm5o550q5m5.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101218gbbhjwm5o550q5m5.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101218gbbhjwm5o550q5m5.jpg referrerpolicy=no-referrer></font></font></div><div align=center><font size=2><font color=#808080>体素《我的世界》</font></font></div><br><div align=center><font size=2><font color=#808080><img id=aimg_983541 aid=983541 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101219c3rs3dg6rq16q6uk.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101219c3rs3dg6rq16q6uk.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101219c3rs3dg6rq16q6uk.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101219c3rs3dg6rq16q6uk.jpg referrerpolicy=no-referrer></font></font></div><div align=center><font size=2><font color=#808080>UE5演示的Nanite技术</font></font></div><br>现实中，敲碎一块大石头会得到几块小石头，两块石头相撞会弹开；在缺乏物理支持的引擎中，分解石头模型只能得到若干破碎的曲面，两块石头靠在一起则会相互交叉。想要表达物体碰撞、雨水堆积、发丝飘动、建筑破碎，就需要引擎物理特性的支持。世界知名的物理引擎有AMD公司的Bullet、Nvidia的PhysX，还有Microsoft的Havok。物理引擎以概括和简化的规则，巧妙实现逼真效果。<br><br>物理引擎处理的对象主要可以分为刚体（Rigid Bodies）和柔体（Soft Bodies）两大部分。三位空间里的球形模型是气泡还是铅球，取决于刚体组件的质量、阻力、重力设置；铅球想要“落在”而非穿过地板，需要设置碰撞器让二者接触时就停止运动。国风的武侠、玄幻题材讲究“衣袂飘飘”，在布料、发丝的柔体效果方面积累了很多经验：一种实现方式类似做雨伞，给布料绑定骨骼，通过牵引骨骼改变布料运动；或者以质点-弹簧模式，模拟布料在伸展、折叠时的一些力学特性。<br><br><div align=center><img id=aimg_983542 aid=983542 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101219pc0ck26bf6wuc44f.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101219pc0ck26bf6wuc44f.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101219pc0ck26bf6wuc44f.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101219pc0ck26bf6wuc44f.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>光子在2021年腾讯游戏发布会上的技术演示</font></font></div><br>在引擎中可以设定具体的物理参数，如摩擦系数大小；也可以改变虚拟场景的运行定律。比如使场景中的重力和现实一致，或设定为“重力方向可由玩家操作改变”（游戏《重力异想世界》）。在物理引擎的支持下，可以在虚拟环境下模拟一些真实场景，比如高中课本中的“在斜坡上拉动载着弹簧和小球的小车”，演示阿基米德定律，或者用强化学习训练一只模拟狗学习走路。<br><br><div align=center><img id=aimg_983543 aid=983543 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101220q5ojfjj5vqfjq5ym.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101220q5ojfjj5vqfjq5ym.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101220q5ojfjj5vqfjq5ym.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101220q5ojfjj5vqfjq5ym.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>PhysX的FleX特性展示（2015年）</font></font></div><br><strong><font color=#de5650>动作：驱动更自然的角色行为</font></strong><br><br>在游戏美术的诸多环节中，动作调整是个不折不扣的苦力活儿，需要设计师对着照片或者视频，在关键帧一点点手动调节每个关节的位置。找不到感觉的时候，就拉着同事或亲自上阵，感受骨骼走向、肌肉发力。要让角色鲜活逼真，动作的真实度和丰富度都不可缺少。<br><br>动作捕捉技术可以高效获取大量动作数据，并显著提升真实度，在影视特效、游戏制作中已成熟应用。2015年前后，动作捕捉的使用难度下降，场地校准、骨骼建模、动作回看所需时间大幅缩短；精度上升，支持对手指动作的捕捉。《战神4》等3A游戏在制作影视级过场剧情时，会同时录制演员的肢体运动、面部表情、摄像机运动和前期录音。<br><br><div align=center><img id=aimg_983544 aid=983544 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101220emneooo5on5h3ana.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101220emneooo5on5h3ana.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101220emneooo5on5h3ana.jpg width=555 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101220emneooo5on5h3ana.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>《战神4》之战神和他的老父亲</font></font></div><br>收集足够多的动作片段素材是第一步，如何让动作和动作之间真实衔接，曾经是一个难点。暴力解法是为每两个独立的动作之间再做一个衔接动画，当基础动作数为100时，需要额外加做至多100*99/2=4950段新动画。育碧在《荣耀战魂》中应用的Motion Matching技术，核心是基于大量连续的动作数据，根据玩家的输入和角色所处的状态等信息，自动化的搜索出最匹配未来角色状态的动作并播放，节约工作量并使动作连续自然。<br><br>在AI加持下，未来将从播放既定动画，到智能体自主学习复杂动作。育碧2020年在SIGG发表最新成果《LearnedMotion Matching》（https://montreal.ubisoft.com/en/learned-motion-matching-2/），利用神经网络和深度学习技术，AI能够抽象出动作和环境间的逻辑，学会爬坡上坎、坐在椅子上等复杂动作组合，更自然地切换动作，切实地与虚拟环境融为一体，进一步减少训练时间和计算消耗，增加学习的可解释度和泛用性。<br><br><div align=center><img id=aimg_983545 aid=983545 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101220qzb7lqvblpqkp8cg.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101220qzb7lqvblpqkp8cg.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101220qzb7lqvblpqkp8cg.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101220qzb7lqvblpqkp8cg.jpg referrerpolicy=no-referrer></div><br><strong><font color=#de5650>不止游戏：让虚拟和真实紧密结合</font></strong><br><br>引擎实时渲染的效果纤毫毕现、令人沉浸，与现实场景混合在一起，足以以假乱真；在物理特性和动作方面的积累，可以支持简单的仿真模拟应用。因此，一些商业引擎开始探索如何为更多行业开放这些能力，并提供更切合需求的工具，逐步应用在对高保真、实时呈现有需求的多种场景，比如建筑、影视、汽车、直播、模拟训练、工业制造、广告等。<br><br><div align=center><img id=aimg_983546 aid=983546 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101221hukgqoambu3kxcvq.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101221hukgqoambu3kxcvq.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101221hukgqoambu3kxcvq.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101221hukgqoambu3kxcvq.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>影视-虚拟制片 UE与Netflix的曼达洛人</font></font></div><br>过去影视制作中，绿幕拍摄和后期合成依次进行。由于拍摄和制作分离，团队中每个人的工作都面临挑战：演员只能想象着场景表演，人和场景的融合需要大量后期工作，导演不能实时看到拍摄效果，道具和场景师也无法在现场及时调整布景。<br><br>虚拟制片正以实时模式改变制作流程，游戏引擎助力场景更加真实。片场搭设多面实时LED幕墙，蓝天白云与四周风景真实倒映在演员墨镜、皮衣等反光材质上。布景中的山体、云雾如在镜头中效果不佳，也能现场修改。整体提升虚实结合拍摄效率，为艺术家带来更多灵感和创作空间。<br><br><div align=center><img id=aimg_983547 aid=983547 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101221zteb9sat9zfkc4gs.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101221zteb9sat9zfkc4gs.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101221zteb9sat9zfkc4gs.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101221zteb9sat9zfkc4gs.jpg referrerpolicy=no-referrer></div><br>《曼达洛人》第1季的过半镜头正是这样拍摄的：有4台同步的PC运行虚幻引擎，实时驱动LED幕墙播放预先制作好的高精度美术素材。另一方面，三名虚幻操作者可以同时操纵幕墙上的虚拟场景、光照和效果。LED幕墙内的工作人员也能用iPad远程控制场景，与导演并肩合作。节约外景地拍摄成本的同时，可以利用摄像机中的准确光照和反光拍摄大量复杂的视觉特效镜头，并且在片场共同对场景进行实时迭代。《西部世界》《权力的游戏》等多部影视作品也使用了虚拟制片模式。<br><br><div align=center><img id=aimg_983548 aid=983548 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101222ir77silusiiuntnn.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101222ir77silusiiuntnn.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101222ir77silusiiuntnn.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101222ir77silusiiuntnn.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>汽车-赋能汽车产业驶向未来</font></font></div><br>游戏引擎作为实时3D创作平台，其技术被汽车行业广泛应用在设计与工程验证，内外饰效果与HMI(人机交互)，市场推广与终端销售，模拟培训与自动驾驶等领域。<br><br>我们常在各种广告中见到酷炫的汽车外观展示，在灯光下车身玻璃、金属和油漆闪现不同光泽，勾勒出流畅生动的车体曲线。游戏引擎能够实时渲染出细节丰沛的图像，帮助设计师随时调整汽车形体、颜色、材质和细节，并加入复杂灯光烘托氛围，为视频广告提供支持。像素推流（Pixel Streaming）技术可以将模型直接展示在网页中，供用户通过任何终端随时旋转、缩放，任意观看。<br><br><div align=center><img id=aimg_983549 aid=983549 zoomfile=https://di.gameres.com/attachment/forum/202106/08/101222k9b9ibee9viivzpb.jpg class=lazyload data-srcset=https://di.gameres.com/attachment/forum/202106/08/101222k9b9ibee9viivzpb.jpg srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-original=https://di.gameres.com/attachment/forum/202106/08/101222k9b9ibee9viivzpb.jpg width=600 inpost=1 src=https://di.gameres.com/attachment/forum/202106/08/101222k9b9ibee9viivzpb.jpg referrerpolicy=no-referrer></div><div align=center><font size=2><font color=#808080>迈凯伦官网上使用游戏引擎制作和实时推流的汽车模型</font></font></div><br>自动驾驶需要大量测试和数据来提升算法的效率及可靠性，而传统的道路测试难以满足。根 据美国兰德公司的研究，自动驾驶算法想要达到人类驾驶员水平至少需要累计177亿公里的驾驶数据来完善算法。传统道路测试成本高昂，存在一定安全隐患，且不能完全展现实际中的多种突发情况。什么车能不费一滴油24小时连轴运转，又有什么场地既能一秒模拟极端恶劣天气、电动车变道加塞、行人从盲区中走出等突发情况，同时不危害实际道路安全？<br><br>自动驾驶仿真系统应运而生，游戏引擎的渲染、物理能力起到重要作用。例如，腾讯TAD Sim引入UE4，以得到更好的环境仿真效果和更加精准的传感器仿真结果。游戏引擎的渲染能力可以为仿真场景制作非常逼真的光影效果，以及风、霜、雨、雪等天气条件的变化。同时借由物理引擎的力量，可以为仿真世界定义一套与现实世界一样的物理规则，让光照条件和天气条件的变化，包括各种交通元素的行为对仿真场景产生的影响与现实世界一致，这对车辆感知算法和控制算法的训练来说非常重要。目前场景库中有超过1000种场景类型，可以泛化生成万倍以上丰富场景，具备每日1000万公里以上的测试能力。<br><br><strong><font color=#de5650>下一个十年，游戏引擎还会带来哪些惊喜</font></strong><br><br>创造一个世界可以很简单，一张纸，一根笔，加上天马行空的想象力；创造一个世界可以很复杂，辛苦到上帝都需要休息一天。现有的游戏引擎如要打造头号玩家中的“绿洲”，在能力和功能上都相距甚远。但在硬件算力的加持下，在计算机图形学家和工程师孜孜不倦的努力下，在艺术家和设计师的巧思妙手中，引擎在向着更强大、更易用、更泛用的方向加速发展。未来，游戏引擎还将在以下几方面着力突破：<br><br>更强大的全方位表现力，提升沉浸感——包括在画面上实时提供影视级的真实感与丰富细节，更逼真的光照、粒子特效；物理层面对现实世界更近似的模拟方式；声音方面更准确还原声场，与场景深度融合。<br><br>更易用及更泛用——将复杂的技术留在冰山之下，让更多普通创作者以简单操作实现高阶效果，实现面向不同场景、需求和使用者的功能组合；跨平台能力，对VR\AR\MR等新硬件和平台更好的支持；探索原生云游戏引擎能力，充分利用GPU集群化渲染能力，探索突破单卡算力的高品质游戏；增加更多关联软件的协同性。<br><br>与基于数据驱动的深度学习相结合——辅助程序化生成，提升美术制作能力及效率，使场景的规模和复杂性满足开放大世界需求，让角色动作真实连贯，高效完成场景测试。<br><br>更广泛的应用领域——向更多需要实时、高保真画面呈现，提供沉浸式体验的行业进行渗透，与机器人、无人机、物联网等有更多的集成和交互。<br><br>面向未来，在虚拟与真实体验融合、实体与数字全面融合的发展过程中，以游戏引擎为代表的游戏技术和工具将具有更泛化的能力，连接影视、工业、仿真等更多领域、功能与服务，创造出更大的社会价值。<br><br><font size=2><font color=#808080></font></font><br><font size=2><font color=#808080>来源：腾讯研究院</font></font><br><font size=2><font color=#808080>原文：https://mp.weixin.qq.com/s/409SWJEkLzLPyDnhnUBfKA</font></font><br></td></tr></tbody></table></div><div class=footer><div class=copyright><blockquote><p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p><p>本文永久链接是：<a href=https://news.slqwq.cn/p/b8ed.html>https://news.slqwq.cn/p/b8ed.html</a></p></blockquote></div></div><div class=article-meta id=bottom><div class=new-meta-box><div class="new-meta-item date" itemprop=dateUpdated datetime=2021-07-11T00:43:53+00:00><a class=notlink><i class="fas fa-edit fa-fw" aria-hidden=true></i><p>更新于：2021年7月11日</p></a></div><div class="new-meta-item share -mob-share-list"><div class="-mob-share-list share-body"><a class=-mob-share-qq rel="external nofollow noopener noreferrer noopener" target=_blank href="http://connect.qq.com/widget/shareqq/index.html?url=https://news.slqwq.cn/p/b8ed.html&title=一文读懂游戏引擎：核心问题、适用场景与下一个十年 - Hajeekn RSSHUB&pics=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-qzone rel="external nofollow noopener noreferrer noopener" target=_blank href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://news.slqwq.cn/p/b8ed.html&title=一文读懂游戏引擎：核心问题、适用场景与下一个十年 - Hajeekn RSSHUB&pics=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a> <a class=-mob-share-weibo rel="external nofollow noopener noreferrer noopener" target=_blank href="http://service.weibo.com/share/share.php?url=https://news.slqwq.cn/p/b8ed.html&title=一文读懂游戏引擎：核心问题、适用场景与下一个十年 - Hajeekn RSSHUB&pics=https://di.gameres.com/attachment/forum/202106/08/101212dxucpcxykpjdbtz0.jpg&summary="><img src=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png class=lazyload data-srcset=https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a></div></div></div></div><div class=prev-next><a class=prev href=/p/a74c.html><p class=title><i class="fas fa-chevron-left" aria-hidden=true></i>Reckitt Case Study</p><p class=content>Topic Case stu...</p></a><a class=next href=/p/facb.html><p class=title>动作手游《鬼泣-巅峰之战》直播现场爆料，竟扯出这么多内幕！<i class="fas fa-chevron-right" aria-hidden=true></i></p><p class=content>5 月 28 日，云畅游戏 CEO 高云峥和 Unity 的高级解决方案工程师李中元两位大咖进入了 Unity 直播间，为大家带来了精彩的技术分享~ 作为动作游戏神作《鬼泣》的...</p></a></div></article></div><aside class=l_side></aside><script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="一文读懂游戏引擎：核心问题、适用场景与下一个十年";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script></div><footer class="footer clearfix"><br><br><div class=aplayer-container></div><br><div class=social-wrapper></div><div><p>博客内容遵循 <a target=_blank rel=noopener href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p></div><div><p><span id=lc-sv>本站总访问量为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 次</span> <span id=lc-uv>访客数为<span id=number><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden=true></i></span> 人</span></p></div>本站使用 <a href=https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1 target=_blank class=codename>Volantis</a> 作为主题<div class=copyright><p><a href="/">Copyright © 2017-2020 XXX</a></p></div></footer><a id=s-top class="fas fa-arrow-up fa-fw" href=javascript:void(0)></a></div></div><div><script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script><script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script><script src=https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js></script><script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script><script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script><script defer src=https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js></script><script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script><script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script><script defer src=https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js></script><script src=/js/valine.js></script><script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script><script src=/js/app.js></script><script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script><script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://news.slqwq.cn' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://news.slqwq.cn' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script><script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script><script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script><script src=https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js></script><script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script></div></body></html>
